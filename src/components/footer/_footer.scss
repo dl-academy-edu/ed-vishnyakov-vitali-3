@@ -1,0 +1,149 @@
+@import "../colors";
+@import "../vars.scss";
+@import "../mixins.scss";
+
+.footer {
+  text-align: center;
+
+  padding-bottom: 60px;
+
+  &__title {
+    margin: 55px 0 22px;
+
+    @include media_interval(0, $media_mobile) {
+      margin: 37px 0 13px;
+    }
+  }
+
+  &__feedback {
+    width: 270px;
+    margin: 0 auto 48px;
+
+    &-text {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+      color: $c_black;
+    }
+
+    &-button {
+      background-color: $c_black;
+
+      border: 2.5px solid $c_white;
+      border-radius: 30px;
+
+      padding: 10px 29px;
+
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 22px;
+      color: $c_grey-2;
+      text-align: center;
+
+      cursor: pointer;
+
+      margin-top: 30px;
+
+      transition: background-color $tr_duration $tr_easing;
+
+      &:hover,
+      &:focus {
+        background-color: $c_white;
+        color: $c_black;
+        border: 2.5px solid $c_black;
+        font-weight: 700;
+      }
+
+      @include media_interval(0, $media_mobile) {
+        margin-top: 41px;
+      }
+    }
+  }
+
+  &__social {
+    margin: 16px auto;
+
+    padding-left: 7px;
+
+    max-width: 330px;
+
+    @include media_interval(0, $media_mobile) {
+      padding-left: 42px;
+    }
+
+    &-list {
+      display: flex;
+      flex-flow: wrap;
+    }
+
+    &-item {
+      margin: 0 10px 30px 0;
+      @include media_interval($media_mobile, $media_4k) {
+        &:nth-child(6n + 4) {
+          margin-left: 20px;
+        }
+      }
+    }
+
+    &-link {
+      background-color: $c_white;
+
+      border: 2.5px solid $c_black;
+      border-radius: 30px;
+
+      margin-bottom: 9px;
+
+      padding: 8px 17px;
+
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      color: $c_black;
+      text-align: center;
+
+      cursor: pointer;
+
+      transition: background-color $tr_duration $tr_easing;
+
+      &:hover,
+      &:focus {
+        background-color: $c_black;
+        color: $c_white;
+        border: 2.5px solid $c_black;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__text-bottom {
+    margin: 0 auto;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    color: $c_grey;
+
+    max-width: 190px;
+
+    &--link {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: $c_grey;
+
+      text-decoration: underline;
+
+      transition: color $tr_duration $tr_easing;
+
+      &:hover,
+      &:focus {
+        color: $c_black;
+      }
+    }
+  }
+}

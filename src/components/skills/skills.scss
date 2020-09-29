@@ -1,0 +1,122 @@
+@import "../colors";
+@import "../vars.scss";
+@import "../mixins.scss";
+
+.skills {
+  margin-bottom: 60px;
+
+  @include media_interval($media_mobile, $media_tablet) {
+    margin-bottom: 21px;
+  }
+
+  @include media_interval(0, $media_mobile) {
+    margin: 0;
+  }
+
+  &__title {
+    text-align: center;
+
+    margin: 60px 0 23px;
+
+    @include media_interval(0, $media_mobile) {
+      margin: 39px 0 13px;
+    }
+  }
+
+  &__text {
+    text-align: center;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 51px 0 0px;
+
+    @include media_interval(0, $media_tablet) {
+      flex-wrap: wrap;
+    }
+
+    @include media_interval(0, $media_mobile) {
+      margin: 41px 0 0px;
+    }
+  }
+
+  &__item {
+    text-align: center;
+
+    @include media_interval($media_mobile, $media_tablet) {
+      margin-bottom: 38px;
+    }
+
+    @include media_interval(0, $media_mobile) {
+      margin-bottom: 40px;
+    }
+
+    &-img {
+      margin-bottom: 15px;
+    }
+
+    &-name {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 17px;
+
+      margin-bottom: 24px;
+
+      color: $c_grey;
+    }
+  }
+
+  &__progress {
+    border: none;
+
+    max-width: 142px;
+    height: 9px;
+
+    background-color: $c_grey-3;
+
+    @include media_interval($media_mobile, $media_tablet) {
+      max-width: 111px;
+    }
+
+    @include media_interval(0, $media_mobile) {
+      max-width: 94px;
+    }
+
+    &-interest {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 17px;
+
+      margin-right: 7px;
+
+      color: $c_grey;
+    }
+  }
+
+  &__progress::-webkit-progress-bar {
+    border: none;
+
+    max-width: 142px;
+    height: 9px;
+
+    background-color: $c_grey-3;
+  }
+
+  &__progress::-webkit-progress-value {
+    border: none;
+
+    max-width: 142px;
+    height: 9px;
+
+    background-color: $c_black;
+  }
+}
