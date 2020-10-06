@@ -87,21 +87,6 @@
   &__pagination {
     display: flex;
     justify-content: space-between;
-
-    &-nav {
-      border: none;
-
-      background-color: $c_white;
-
-      padding: 0;
-
-      transition: opacity $tr_duration $tr_easing;
-
-      &:hover,
-      &:focus {
-        opacity: 0.5;
-      }
-    }
   }
 
   &__dots {

@@ -1,3 +1,13 @@
 @import "../colors";
 @import "../vars.scss";
 @import "../mixins.scss";
+
+.my-profile {
+  &__title {
+    margin: 0 0 27px;
+  }
+
+  &__wrapper {
+    margin-left: -20px; 
+  }
+}

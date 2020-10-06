@@ -11,7 +11,7 @@
     margin: 55px 0 22px;
 
     @include media_interval(0, $media_mobile) {
-      margin: 37px 0 13px;
+      margin: 37px 0 12px;
     }
   }
 
@@ -30,7 +30,7 @@
     &-button {
       background-color: $c_black;
 
-      border: 2.5px solid $c_white;
+      border: 2.5px solid $c_black;
       border-radius: 30px;
 
       padding: 10px 29px;
@@ -57,7 +57,7 @@
       }
 
       @include media_interval(0, $media_mobile) {
-        margin-top: 41px;
+        margin-top: 39px;
       }
     }
   }
@@ -84,36 +84,6 @@
         &:nth-child(6n + 4) {
           margin-left: 20px;
         }
-      }
-    }
-
-    &-link {
-      background-color: $c_white;
-
-      border: 2.5px solid $c_black;
-      border-radius: 30px;
-
-      margin-bottom: 9px;
-
-      padding: 8px 17px;
-
-      font-style: normal;
-      font-weight: bold;
-      font-size: 18px;
-      line-height: 22px;
-      color: $c_black;
-      text-align: center;
-
-      cursor: pointer;
-
-      transition: background-color $tr_duration $tr_easing;
-
-      &:hover,
-      &:focus {
-        background-color: $c_black;
-        color: $c_white;
-        border: 2.5px solid $c_black;
-        font-weight: 700;
       }
     }
   }

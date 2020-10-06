@@ -81,8 +81,80 @@ p {
   margin: 0;
 }
 
+h3 {
+  margin: 0;
+}
+
 button {
   cursor: pointer;
 
   outline: none;
+}
+
+.button,
+.link {
+  background-color: $c_white;
+
+  border: 2.5px solid $c_black;
+  border-radius: 30px;
+
+  margin-bottom: 9px;
+
+  padding: 8px 17px;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: $c_black;
+  text-align: center;
+
+  cursor: pointer;
+
+  transition: background-color $tr_duration $tr_easing;
+
+  &:hover,
+  &:focus {
+    background-color: $c_black;
+    color: $c_white;
+    border: 2.5px solid $c_black;
+    font-weight: 700;
+  }
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination-nav {
+  border: none;
+
+  background-color: $c_white;
+
+  padding: 0;
+
+  transition: opacity $tr_duration $tr_easing;
+
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+}
+
+.burger-menu {
+  border: none;
+
+  margin: 4px 0 0;
+
+  padding: 0;
+
+  background-color: $c_white;
+
+  display: none;
+
+  @include media_interval(0, $media_mobile) {
+    display: block;
+  }
 }

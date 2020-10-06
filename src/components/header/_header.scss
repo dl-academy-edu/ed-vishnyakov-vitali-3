@@ -27,8 +27,6 @@
     line-height: 22px;
     color: $c_black;
 
-    margin-left: 10px;
-
     transition: color $tr_duration $tr_easing;
 
     &:hover,
@@ -36,10 +34,6 @@
       color: $c_grey;
 
       border: none;
-    }
-
-    @include media_interval($media_mobile, $media_tablet) {
-      margin: 0;
     }
   }
 
