@@ -89,11 +89,17 @@ button {
   cursor: pointer;
 
   outline: none;
+
+  border: none;
+
+  padding: 0;
+
+  background-color: $c_white;
 }
 
 .button,
 .link {
-  background-color: $c_white;
+  // background-color: $c_white;
 
   border: 2.5px solid $c_black;
   border-radius: 30px;
@@ -108,8 +114,6 @@ button {
   line-height: 22px;
   color: $c_black;
   text-align: center;
-
-  cursor: pointer;
 
   transition: background-color $tr_duration $tr_easing;
 
@@ -129,12 +133,6 @@ fieldset {
 }
 
 .pagination-nav {
-  border: none;
-
-  background-color: $c_white;
-
-  padding: 0;
-
   transition: opacity $tr_duration $tr_easing;
 
   &:hover,
@@ -144,13 +142,7 @@ fieldset {
 }
 
 .burger-menu {
-  border: none;
-
   margin: 4px 0 0;
-
-  padding: 0;
-
-  background-color: $c_white;
 
   display: none;
 

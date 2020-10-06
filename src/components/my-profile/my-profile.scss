@@ -2,12 +2,93 @@
 @import "../vars.scss";
 @import "../mixins.scss";
 
-.my-profile {
+.profile {
+  &__main {
+    display: flex;
+    justify-content: space-between;
+
+    @include media_interval(0, $media_mobile) {
+      margin-top: 30px;
+    }
+  }
+
   &__title {
-    margin: 0 0 27px;
+    margin: 0 0 41px;
+    @include media_interval(0, $media_mobile) {
+      width: 100px;
+    }
   }
 
   &__wrapper {
-    margin-left: -20px; 
+    display: flex;
+
+    @include media_interval($media_mobile, $media_tablet) {
+      margin-bottom: 349px;
+    }
+
+    @include media_interval(0, $media_mobile) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__box-foto {
+    background-color: $c_grey-2;
+    max-width: 320px;
+    height: 450px;
+
+    box-shadow: 0px 4px 20px rgba($c_black, 0.25);
+
+    @include media_interval($media_mobile, $media_tablet) {
+      max-width: 314px;
+    }
+
+    @include media_interval(0, $media_mobile) {
+      max-width: 280px;
+
+      margin-bottom: 38px;
+    }
+
+    &--svg {
+      margin: 155px 100px;
+
+      @include media_interval(0, $media_mobile) {
+        margin: 151px 80px;
+      }
+    }
+  }
+
+  &__data {
+    margin-left: 105px;
+
+    @include media_interval($media_mobile, $media_tablet) {
+      margin-left: 76px;
+    }
+
+    @include media_interval(0, $media_mobile) {
+      margin: 0;
+    }
+
+    &-list {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 22px;
+
+      margin-bottom: 32px;
+    }
+
+    &-item {
+      margin-bottom: 20px;
+    }
+
+    &-bold {
+      margin-right: 15px;
+    }
+
+    &-button {
+      display: block;
+
+      margin-bottom: 20px;
+    }
   }
 }
