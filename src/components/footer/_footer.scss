@@ -88,7 +88,7 @@
     }
   }
 
-  &__text-bottom {
+  &__bottom-text {
     margin: 0 auto;
 
     font-style: normal;
@@ -100,19 +100,17 @@
     max-width: 190px;
 
     &--link {
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 16px;
       color: $c_grey;
 
-      text-decoration: underline;
+      border-bottom: 1px dashed $c_grey;
 
-      transition: color $tr_duration $tr_easing;
+      transition: $tr_duration $tr_easing;
 
       &:hover,
       &:focus {
         color: $c_black;
+
+        border-bottom: 1px solid $c_black;
       }
     }
   }

@@ -1,0 +1,174 @@
+@import "../colors";
+@import "../vars.scss";
+@import "../mixins.scss";
+
+.my-profile_data {
+  // display: none;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background-color: $c_grey-2;
+
+  &_open {
+    display: flex;
+
+    @include media_interval(0, $media_mobile-medium) {
+      padding: 0 20px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+
+    background-color: $c_white;
+
+    padding: 37px 37px;
+
+    width: 680px;
+
+    position: relative;
+
+    margin: auto;
+
+    border: 2.5px solid $c_black;
+
+    @include media_interval($media_tablet, $media_laptop) {
+      width: 648px;
+
+      padding: 42px 56px;
+    }
+
+    @include media_interval($media_mobile, $media_tablet) {
+      width: 648px;
+
+      padding: 42px 56px;
+    }
+
+    @include media_interval(0, $media_mobile) {
+      padding: 25px 24px;
+    }
+
+    &-lable {
+      display: flex;
+      flex-direction: column-reverse;
+
+      margin-bottom: 20px;
+
+      @include media_interval(0, $media_mobile) {
+        margin-bottom: 14px;
+      }
+    }
+
+    &-input {
+      font-family: "Roboto", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 21px;
+
+      border: 2.5px solid $c_grey-3;
+
+      padding: 12px 19px;
+
+      cursor: pointer;
+
+      transition: $tr_duration $tr_easing;
+
+      @include media_interval(0, $media_mobile) {
+        padding: 8px 15px;
+      }
+
+      &:hover {
+        border: 2.5px solid $c_grey;
+
+        outline: none;
+      }
+
+      &:active,
+      &:focus {
+        border: 2.5px solid $c_black;
+
+        outline: none;
+      }
+    }
+
+    &-text {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+
+      margin-bottom: 7px;
+    }
+
+    &-feedback {
+      display: flex;
+      justify-content: space-between;
+
+      @include media_interval(0, $media_mobile) {
+        flex-wrap: wrap;
+      }
+    }
+
+    &-left-input {
+      margin-right: 10px;
+      width: 100%;
+
+      @include media_interval(0, $media_mobile) {
+        margin: 0px 0px 17px;
+      }
+    }
+
+    &-right-input {
+      margin-left: 10px;
+      width: 100%;
+
+      @include media_interval(0, $media_mobile) {
+        margin: 0px 0 14px;
+      }
+    }
+
+    &-location-input {
+      width: 48%;
+    }
+
+    &-button {
+      align-self: start;
+
+      margin: 0;
+    }
+  }
+
+  &__form-close {
+    position: absolute;
+    top: -3px;
+    right: -39px;
+    cursor: pointer;
+
+    width: 25px;
+    height: 25px;
+
+    border: none;
+
+    background: url(/static/images/Close.svg);
+
+    transition: $tr_duration $tr_easing;
+
+    @include media_interval(0, $media_tablet) {
+      top: -25px;
+      right: 0;
+    }
+
+    &:hover,
+    &:active {
+      background: url(/static/images/Close_black.svg);
+    }
+  }
+}

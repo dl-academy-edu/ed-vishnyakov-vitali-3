@@ -3,6 +3,8 @@
 @import "../mixins.scss";
 
 .mobile-menu {
+  display: none;
+
   position: fixed;
   top: 0;
   right: 0;
@@ -13,14 +15,12 @@
 
   background-color: rgba($c_grey-2, 0.99);
 
-  display: none;
-
   &__button-close {
     border: none;
 
     background-color: initial;
 
-    margin: 171px 17px 58px 0;
+    margin: 172px 23px 58px 0;
   }
 
   &__nav {

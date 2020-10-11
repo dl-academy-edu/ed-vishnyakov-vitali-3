@@ -29,6 +29,10 @@
 
   &__wrapper {
     margin-top: 41px;
+
+    @include media_interval(0, $media_mobile) {
+      margin-top: 39px;
+    }
   }
   &__form {
     display: flex;
@@ -37,11 +41,11 @@
     margin-bottom: 23px;
 
     @include media_interval($media_mobile, $media_tablet) {
-      margin-bottom: 35px;
+      margin-bottom: 29px;
     }
 
     @include media_interval(0, $media_mobile) {
-      margin-bottom: 30px;
+      margin-bottom: 32px;
     }
   }
 
@@ -72,11 +76,15 @@
     max-width: 120px;
 
     @include media_interval($media_mobile, $media_tablet) {
-      margin-right: 64px;
+      margin: 20px 47px 0 0;
+
+      order: 5;
     }
 
     @include media_interval(0, $media_mobile) {
-      margin-right: 28px;
+      margin: 14px 30px 0 0;
+
+      order: 5;
     }
   }
   &__input-checkbox {
@@ -122,12 +130,9 @@
 
     &::before {
       content: "";
-
       display: block;
       width: 100%;
       height: 100%;
-      background: url(/static/images/check_mark.svg);
-      background-repeat: no-repeat;
 
       opacity: 0;
 
@@ -138,30 +143,68 @@
 
     &--dark-blue {
       color: $checkbox_dark-blue;
+      &::before {
+        background: url(/static/images/check_mark_dark-blue.svg);
+        background-repeat: no-repeat;
+      }
     }
     &--blue {
       color: $checkbox_blue;
-    }
-    &--dark-blue {
-      color: $checkbox_dark-blue;
+      &::before {
+        background: url(/static/images/check_mark_blue.svg);
+        background-repeat: no-repeat;
+      }
     }
     &--yellow {
       color: $checkbox_yellow;
+      &::before {
+        background: url(/static/images/check_mark_yellow.svg);
+        background-repeat: no-repeat;
+      }
     }
     &--turquoise {
       color: $checkbox_turquoise;
+      &::before {
+        background: url(/static/images/check_mark_turquoise.svg);
+        background-repeat: no-repeat;
+      }
     }
     &--orange {
       color: $checkbox_orange;
+      &::before {
+        background: url(/static/images/check_mark_orange.svg);
+        background-repeat: no-repeat;
+      }
     }
     &--pink {
       color: $checkbox_pink;
+      &::before {
+        background: url(/static/images/check_mark_pink.svg);
+        background-repeat: no-repeat;
+      }
     }
+
     &--purple {
       color: $checkbox_purple;
+      &::before {
+        background: url(/static/images/check_mark_purple.svg);
+        background-repeat: no-repeat;
+      }
     }
     &--green {
       color: $checkbox_green;
+      &::before {
+        background: url(/static/images/check_mark_green.svg);
+        background-repeat: no-repeat;
+      }
+    }
+
+    &--black {
+      color: $c_black;
+      &::before {
+        background: url(/static/images/check_mark_black.svg);
+        background-repeat: no-repeat;
+      }
     }
   }
 
@@ -170,9 +213,13 @@
 
     @include media_interval($media_mobile, $media_tablet) {
       margin-right: 47px;
+
+      order: 2;
     }
     @include media_interval(0, $media_mobile) {
       margin: 0 0 25px 0;
+
+      order: 2;
     }
   }
 
@@ -198,6 +245,8 @@
         background: url(/static/images/radio.svg) no-repeat;
 
         margin-right: 12px;
+
+        transition: $tr_duration $tr_easing;
       }
       &:hover ::before {
         filter: grayscale(100%);
@@ -205,8 +254,6 @@
     }
     input[type="radio"]:checked + label:before {
       background: url(/static/images/radio_checked.svg) no-repeat;
-
-      transition: opacity $tr_duration $tr_easing;
     }
   }
 
@@ -218,10 +265,12 @@
     margin-right: 138px;
 
     @include media_interval($media_mobile, $media_tablet) {
-      margin-right: 89px;
+      margin-right: 110px;
+      order: 1;
     }
     @include media_interval(0, $media_mobile) {
-      margin: 0 75px 25px 0;
+      margin: 0 75px 33px 0;
+      order: 1;
     }
   }
 
@@ -230,10 +279,12 @@
 
     @include media_interval($media_mobile, $media_tablet) {
       margin-right: 0;
+      order: 4;
     }
 
     @include media_interval(0, $media_mobile) {
       margin: 0;
+      order: 4;
     }
   }
 
@@ -241,16 +292,30 @@
     margin-right: 48px;
 
     @include media_interval($media_mobile, $media_tablet) {
-      margin-right: 85px;
-      margin-top: 20px;
+      margin-right: 81px;
+
+      order: 3;
+    }
+    @include media_interval(0, $media_mobile) {
+      margin-right: 68px;
+
+      order: 3;
     }
   }
 
   &__button {
     align-self: center;
 
+    @include media_interval($media_mobile, $media_tablet) {
+      margin-top: 46px;
+
+      order: 6;
+    }
+
     @include media_interval(0, $media_mobile) {
-      margin: 0;
+      margin-top: 40px;
+
+      order: 6;
     }
   }
 

@@ -86,8 +86,15 @@
       font-size: 18px;
       line-height: 21px;
       color: $c_white;
-      text-decoration: underline;
+
       margin: 0 auto 18px;
+
+      border-bottom: 1px dashed;
+
+      &:hover,
+      &:focus {
+        border-bottom: 1px solid;
+      }
 
       @include media_interval(0, $media_mobile) {
         max-width: 160px;
