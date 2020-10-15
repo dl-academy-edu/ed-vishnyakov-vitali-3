@@ -2,8 +2,8 @@
 @import "../vars.scss";
 @import "../mixins.scss";
 
-.my-profile_data {
-  // display: none;
+.my-profile-data {
+  display: flex;
 
   position: fixed;
   top: 0;
@@ -13,12 +13,12 @@
 
   background-color: $c_grey-2;
 
+  @include media_interval(0, $media_mobile) {
+    background-color: $c_white;
+  }
+
   &_open {
     display: flex;
-
-    @include media_interval(0, $media_mobile-medium) {
-      padding: 0 20px;
-    }
   }
 
   &__form {
@@ -29,7 +29,7 @@
 
     background-color: $c_white;
 
-    padding: 37px 37px;
+    padding: 38px;
 
     width: 680px;
 
@@ -39,20 +39,10 @@
 
     border: 2.5px solid $c_black;
 
-    @include media_interval($media_tablet, $media_laptop) {
-      width: 648px;
-
-      padding: 42px 56px;
-    }
-
-    @include media_interval($media_mobile, $media_tablet) {
-      width: 648px;
-
-      padding: 42px 56px;
-    }
-
     @include media_interval(0, $media_mobile) {
-      padding: 25px 24px;
+      border: none;
+
+      padding: 82px 20px;
     }
 
     &-lable {
@@ -60,14 +50,9 @@
       flex-direction: column-reverse;
 
       margin-bottom: 20px;
-
-      @include media_interval(0, $media_mobile) {
-        margin-bottom: 14px;
-      }
     }
 
     &-input {
-      font-family: "Roboto", sans-serif;
       font-style: normal;
       font-weight: normal;
       font-size: 18px;
@@ -75,15 +60,11 @@
 
       border: 2.5px solid $c_grey-3;
 
-      padding: 12px 19px;
+      padding: 12px;
 
       cursor: pointer;
 
       transition: $tr_duration $tr_easing;
-
-      @include media_interval(0, $media_mobile) {
-        padding: 8px 15px;
-      }
 
       &:hover {
         border: 2.5px solid $c_grey;
@@ -122,7 +103,7 @@
       width: 100%;
 
       @include media_interval(0, $media_mobile) {
-        margin: 0px 0px 17px;
+        margin-right: 0;
       }
     }
 
@@ -131,18 +112,21 @@
       width: 100%;
 
       @include media_interval(0, $media_mobile) {
-        margin: 0px 0 14px;
+        margin-left: 0;
       }
     }
 
-    &-location-input {
+    &-picture-input {
       width: 48%;
+
+      @include media_interval(0, $media_mobile) {
+        width: 100%;
+      }
     }
 
     &-button {
       align-self: start;
-
-      margin: 0;
+      margin: 10px 0 0;
     }
   }
 
@@ -161,9 +145,14 @@
 
     transition: $tr_duration $tr_easing;
 
-    @include media_interval(0, $media_tablet) {
-      top: -25px;
-      right: 0;
+    @include media_interval($media_mobile, $media_tablet) {
+      top: -37px;
+      right: -3px;
+    }
+
+    @include media_interval(0, $media_mobile) {
+      top: 36px;
+      left: 20px;
     }
 
     &:hover,
