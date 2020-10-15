@@ -2,8 +2,8 @@
 @import "../vars.scss";
 @import "../mixins.scss";
 
-.my-profile_password {
-  display: none;
+.profile-data {
+  display: flex;
 
   position: fixed;
   top: 0;
@@ -29,9 +29,9 @@
 
     background-color: $c_white;
 
-    padding: 37px;
+    padding: 38px;
 
-    width: 370px;
+    width: 680px;
 
     position: relative;
 
@@ -40,9 +40,9 @@
     border: 2.5px solid $c_black;
 
     @include media_interval(0, $media_mobile) {
-      padding: 0 20px;
-
       border: none;
+
+      padding: 82px 20px;
     }
 
     &-lable {
@@ -60,7 +60,7 @@
 
       border: 2.5px solid $c_grey-3;
 
-      padding: 12px 19px;
+      padding: 12px;
 
       cursor: pointer;
 
@@ -89,14 +89,44 @@
       margin-bottom: 7px;
     }
 
+    &-feedback {
+      display: flex;
+      justify-content: space-between;
+
+      @include media_interval(0, $media_mobile) {
+        flex-wrap: wrap;
+      }
+    }
+
+    &-left-input {
+      margin-right: 10px;
+      width: 100%;
+
+      @include media_interval(0, $media_mobile) {
+        margin-right: 0;
+      }
+    }
+
+    &-right-input {
+      margin-left: 10px;
+      width: 100%;
+
+      @include media_interval(0, $media_mobile) {
+        margin-left: 0;
+      }
+    }
+
+    &-picture-input {
+      width: 48%;
+
+      @include media_interval(0, $media_mobile) {
+        width: 100%;
+      }
+    }
+
     &-button {
       align-self: start;
-
       margin: 10px 0 0;
-
-      @include media_interval(0, $media_tablet) {
-        margin: 7px 0 0;
-      }
     }
   }
 
@@ -115,8 +145,13 @@
 
     transition: $tr_duration $tr_easing;
 
-    @include media_interval(0, $media_tablet) {
-      top: -46px;
+    @include media_interval($media_mobile, $media_tablet) {
+      top: -37px;
+      right: -3px;
+    }
+
+    @include media_interval(0, $media_mobile) {
+      top: 36px;
       left: 20px;
     }
 
