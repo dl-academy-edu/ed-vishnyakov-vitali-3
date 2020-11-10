@@ -1,0 +1,35 @@
+<section class="message modal message-modal_js">
+    <form class="modal__form " action="/">
+        <div class="modal__form-feedback">
+            <label class="modal__form-left-input modal__form-lable">
+                <input class="modal__form-input input-text-message_js" type="text" name="name">
+                <span class="modal__form-text">What is your name?<span class="fill">*</span></span>
+            </label>
+            <label class="modal__form-right-input modal__form-lable">
+                <input class="modal__form-input" type="text" name="message">
+                <span class="modal__form-text">Message subject<span class="fill">*</span></span>
+            </label>
+        </div>
+        <div class="modal__form-feedback">
+            <label class="modal__form-left-input modal__form-lable">
+                <input class="modal__form-input" type="email" name="email">
+                <span class="modal__form-text">Your Email<span class="fill">*</span></span>
+            </label>
+            <label class="modal__form-right-input modal__form-lable">
+                <input class="modal__form-input" type="tel" name="phone">
+                <span class="modal__form-text">Your mobile phone<span class="fill">*</span></span>
+            </label>
+        </div>
+        <label class="modal__form-lable">
+            <textarea class="modal__form-message" name="message" cols="30" rows="10"></textarea>
+            <span class="modal__form-text">What do you want to discuss with me?</span>
+        </label>
+        <label class="modal__form-subscribe">
+            <input class="modal__form-subscribe--checkbox" type="checkbox" name="subscribe" value="personal data">
+            <span class="modal__form-subscribe--fake"></span>
+            <span class="modal__form-subscribe--text">Clicking on the button, you consent to the processing of your personal data.</span>
+        </label>
+        <button class="modal__form-button button" type="submit">Send</button>
+        <button class="modal__form-close message-close__js" type="button" aria-label="exit"></button>
+    </form>
+</section>
