@@ -1,0 +1,184 @@
+@import "../colors";
+@import "../vars.scss";
+@import "../mixins.scss";
+
+.blog {
+  margin-bottom: 115px;
+
+  @include media_interval(0, $media_mobile) {
+    margin-bottom: 76px;
+  }
+
+  &__content {
+    display: flex;
+
+    padding: 21px 0 15px 0px;
+
+    border-bottom: 2px solid $c_grey-3;
+
+    @include media_interval(0, $media_mobile) {
+      flex-wrap: wrap;
+      padding: 21px 0 22px;
+    }
+
+    &:first-child {
+      border-top: 2px solid $c_grey-3;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__img {
+    max-width: 380px;
+
+    margin-right: 20px;
+  }
+
+  &__filling {
+    margin-top: 20px;
+
+    @include media_interval(0, $media_mobile) {
+      margin-top: 16px;
+    }
+  }
+
+  &__tags {
+    margin-bottom: 10px;
+    display: flex;
+  }
+
+  &__tag {
+    width: 30px;
+    height: 10px;
+
+    background-color: $c_white;
+
+    border-radius: 5px;
+
+    margin-right: 5px;
+
+    &--orange {
+      background-color: $checkbox_orange;
+    }
+
+    &--purple {
+      background-color: $checkbox_purple;
+    }
+
+    &--green {
+      background-color: $checkbox_green;
+    }
+
+    &--blue {
+      background-color: $checkbox_blue;
+    }
+
+    &--dark-blue {
+      background-color: $checkbox_dark-blue;
+    }
+
+    &--pink {
+      background-color: $checkbox_pink;
+    }
+
+    &--turquoise {
+      background-color: $checkbox_turquoise;
+    }
+  }
+
+  &__info {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: $c_grey;
+
+    margin-bottom: 15px;
+
+    &-date {
+      margin-right: 7px;
+    }
+
+    &-views {
+      margin-right: 7px;
+    }
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    color: $c_black;
+
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: $c_black;
+
+    max-width: 640px;
+
+    margin-bottom: 21px;
+
+    @include media_interval($media_mobile, $media_tablet) {
+      max-width: 290px;
+    }
+  }
+
+  &__link {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: $c_black;
+
+    text-decoration: underline;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 30px;
+
+    @include media_interval($media_mobile, $media_tablet) {
+      margin-top: 20px;
+    }
+
+    @include media_interval(0, $media_mobile) {
+      margin-top: 8px;
+    }
+  }
+
+  &__pages {
+    display: flex;
+
+    margin-top: 12px;
+
+    &-button {
+      padding: 0 5px;
+    }
+
+    &-number {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      color: $c_grey-3;
+
+      transition: color $tr_duration $tr_easing;
+
+      &:hover,
+      &:focus {
+        color: $c_black;
+      }
+    }
+  }
+}

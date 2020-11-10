@@ -1,0 +1,49 @@
+@import "../colors";
+@import "../vars.scss";
+@import "../mixins.scss";
+
+.mobile-menu {
+  display: none;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  text-align: right;
+
+  background-color: rgba($c_grey-2, 0.99);
+
+  &__button-close {
+    border: none;
+
+    background-color: initial;
+
+    margin: 172px 23px 58px 0;
+  }
+
+  &__nav {
+    margin-right: 20px;
+  }
+
+  &__item {
+    margin-bottom: 41px;
+
+    &-link--main {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 34px;
+      line-height: 41px;
+      color: $c_black;
+    }
+
+    &-link {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 34px;
+      line-height: 41px;
+      color: $c_grey;
+    }
+  }
+}

@@ -1,0 +1,157 @@
+@import "./colors";
+@import "./vars.scss";
+@import "./mixins.scss";
+
+.container {
+  min-height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 220px;
+
+  @include media_interval($media_tablet, $media_laptop-big) {
+    padding: 0 110px;
+  }
+
+  @include media_interval($media_mobile-medium, $media_tablet) {
+    padding: 0 60px;
+  }
+
+  @include media_interval(0, $media_mobile-medium) {
+    padding: 0 20px;
+  }
+}
+
+body {
+  font-family: "Gilroy", sans-serif;
+}
+
+.title-block {
+  margin: 0 0 20px 0;
+
+  &__one {
+    font-weight: bold;
+    font-style: normal;
+    font-size: 47px;
+    line-height: 57px;
+
+    margin: 0;
+  }
+  &__two {
+    font-size: 34px;
+    line-height: 41px;
+
+    margin: 0;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+ul {
+  list-style-type: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+
+  cursor: pointer;
+
+  outline: none;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+
+  line-height: 0;
+}
+
+p {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+
+  outline: none;
+
+  border: none;
+
+  padding: 0;
+
+  background-color: $c_white;
+}
+
+.button,
+.link {
+  // background-color: $c_white;
+
+  border: 2.5px solid $c_black;
+  border-radius: 30px;
+
+  margin-bottom: 9px;
+
+  padding: 8px 17px;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: $c_black;
+  text-align: center;
+
+  transition: background-color $tr_duration $tr_easing;
+
+  &:hover,
+  &:focus {
+    background-color: $c_black;
+    color: $c_white;
+    border: 2.5px solid $c_black;
+    font-weight: 700;
+  }
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination-nav {
+  transition: opacity $tr_duration $tr_easing;
+
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+}
+
+.burger-menu {
+  margin: 4px 0 0;
+
+  display: none;
+
+  @include media_interval(0, $media_mobile) {
+    display: block;
+  }
+}
+
+.fill {
+  color: #eb3617;
+  margin-left: 5px;
+}

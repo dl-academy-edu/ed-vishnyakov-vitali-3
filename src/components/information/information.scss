@@ -1,0 +1,133 @@
+@import "../colors";
+@import "../vars.scss";
+@import "../mixins.scss";
+
+.information {
+  margin-bottom: 57px;
+
+  @include media_interval(0, $media_mobile) {
+    margin-bottom: 30px;
+  }
+
+  &__data {
+    display: flex;
+
+    margin: 0 0 37px;
+
+    @include media_interval(0, $media_mobile) {
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      margin: 0 0 36px;
+    }
+
+    &-title {
+      max-width: 300px;
+
+      margin: 0 20px 0 0;
+
+      @include media_interval($media_mobile, $media_tablet) {
+        margin: 0 18px 0;
+      }
+      @include media_interval(0, $media_mobile) {
+        margin: 29px 0 0;
+      }
+    }
+
+    &-text {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 21px;
+
+      max-width: 230px;
+
+      margin: 64px 0 0;
+
+      @include media_interval(0, $media_mobile) {
+        max-width: 195px;
+        margin: 23px 0 0;
+      }
+    }
+
+    &-burger-menu {
+      border: none;
+
+      margin: 4px 0 0;
+
+      padding: 0;
+
+      background-color: $c_white;
+
+      display: none;
+
+      @include media_interval(0, $media_mobile) {
+        display: block;
+      }
+    }
+  }
+
+  &__slider {
+    max-width: 1000px;
+  }
+
+  &__slide {
+    margin-bottom: 27px;
+
+    @include media_interval($media_mobile, $media_tablet) {
+      margin-bottom: 38px;
+    }
+
+    &-img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__dots {
+    display: flex;
+
+    margin: 11px 0 0;
+
+    @include media_interval(0, $media_mobile) {
+      margin: 19px 0 0;
+    }
+
+    &-item {
+      margin-left: 7px;
+    }
+
+    &-radio {
+      display: none;
+    }
+
+    &-fake {
+      width: 10px;
+      height: 10px;
+
+      display: inline-block;
+
+      background: $c_grey-3;
+
+      border-radius: 50%;
+
+      transition: background-color $tr_duration $tr_easing;
+
+      cursor: pointer;
+    }
+
+    &-radio:hover ~ .information__dots-fake,
+    &-radio:focus ~ .information__dots-fake {
+      background: $c_grey;
+    }
+
+    &-radio:checked ~ .information__dots-fake {
+      background: $c_black;
+    }
+  }
+}

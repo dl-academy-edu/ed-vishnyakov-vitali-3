@@ -1,0 +1,117 @@
+@import "../colors";
+@import "../vars.scss";
+@import "../mixins.scss";
+
+.footer {
+  text-align: center;
+
+  padding-bottom: 60px;
+
+  &__title {
+    margin: 55px 0 22px;
+
+    @include media_interval(0, $media_mobile) {
+      margin: 37px 0 12px;
+    }
+  }
+
+  &__feedback {
+    width: 270px;
+    margin: 0 auto 48px;
+
+    &-text {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+      color: $c_black;
+    }
+
+    &-button {
+      background-color: $c_black;
+
+      border: 2.5px solid $c_black;
+      border-radius: 30px;
+
+      padding: 10px 29px;
+
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 22px;
+      color: $c_grey-2;
+      text-align: center;
+
+      cursor: pointer;
+
+      margin-top: 30px;
+
+      transition: background-color $tr_duration $tr_easing;
+
+      &:hover,
+      &:focus {
+        background-color: $c_white;
+        color: $c_black;
+        border: 2.5px solid $c_black;
+        font-weight: 700;
+      }
+
+      @include media_interval(0, $media_mobile) {
+        margin-top: 39px;
+      }
+    }
+  }
+
+  &__social {
+    margin: 16px auto;
+
+    padding-left: 7px;
+
+    max-width: 330px;
+
+    @include media_interval(0, $media_mobile) {
+      padding-left: 42px;
+    }
+
+    &-list {
+      display: flex;
+      flex-flow: wrap;
+    }
+
+    &-item {
+      margin: 0 10px 30px 0;
+      @include media_interval($media_mobile, $media_4k) {
+        &:nth-child(6n + 4) {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+
+  &__bottom-text {
+    margin: 0 auto;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    color: $c_grey;
+
+    max-width: 190px;
+
+    &--link {
+      color: $c_grey;
+
+      border-bottom: 1px dashed $c_grey;
+
+      transition: $tr_duration $tr_easing;
+
+      &:hover,
+      &:focus {
+        color: $c_black;
+
+        border-bottom: 1px solid $c_black;
+      }
+    }
+  }
+}
