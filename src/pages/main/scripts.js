@@ -1,15 +1,12 @@
 // top button
 (function () {
-
     const buttonTop = document.querySelector(".btn-top__js");
-
     if(!buttonTop) {
         return;
     }
 
-    function handleScroll(event) {
-
-        if (window.pageYOffset > 1500) {
+    function handleScroll() {
+        if (window.pageYOffset > 1000) {
             if (buttonTop.classList.contains("visually-hidden")) {
                 buttonTop.classList.remove("visually-hidden");
             }
@@ -21,10 +18,12 @@
     }
 
     function handleClick(event) {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        if ((window.pageYOffset > 1000) && (buttonTop.contains(event.target))) {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
     }
 
     window.addEventListener("scroll", handleScroll);
