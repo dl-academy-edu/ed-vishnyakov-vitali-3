@@ -7,5 +7,14 @@
   bottom: 30px;
   right: 30px;
 
-  background-color: transparent;
+  animation: animate 0.3s;
+
+  @keyframes animate {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }

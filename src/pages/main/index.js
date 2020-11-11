@@ -119,5 +119,22 @@
     })
 })();
 
+// mobile menu
 
+(function() {
+    let mobileMenu = document.querySelector(".mobile-menu"),
+        buttonOpenMenu = document.querySelector(".button-open-menu_js"),
+        buttonCloseMenu = document.querySelector(".button-close-menu_js"),
+        mobileMenuFocus = document.querySelector(".mobile-menu-focus_js");
+
+        buttonOpenMenu.addEventListener("click", () => {
+            mobileMenu.classList.add("mobile-menu_open");
+            mobileMenuFocus.focus();
+        });
+
+        buttonCloseMenu.addEventListener("click", () => {
+            mobileMenu.classList.remove("mobile-menu_open");
+            mobileMenuFocus.focus();
+        });
+})();
 
