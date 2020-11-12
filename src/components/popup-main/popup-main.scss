@@ -169,7 +169,7 @@
       &--checkbox {
         display: none;
 
-        &:checked + .modal__form-subscribe--fake::before {
+        &:checked + .popup-main__form-subscribe--fake::before {
           opacity: 1;
         }
       }
@@ -258,7 +258,7 @@
       transition: $tr_duration $tr_easing;
 
       @include media_interval(0, $media_tablet) {
-        top: -25px;
+        top: -30px;
         right: 0;
       }
 
@@ -287,10 +287,6 @@
       to {
         opacity: 1;
       }
-    }
-
-    @include media_interval(0, $media_mobile-medium) {
-      padding: 0 20px;
     }
   }
 }
