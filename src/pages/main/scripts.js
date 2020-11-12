@@ -1,4 +1,5 @@
 // top button
+
 (function () {
     const buttonTop = document.querySelector(".btn-top__js");
     if(!buttonTop) {
@@ -7,116 +8,127 @@
 
     function handleScroll() {
         if (window.pageYOffset > 1000) {
-            if (buttonTop.classList.contains("visually-hidden")) {
                 buttonTop.classList.remove("visually-hidden");
-            }
         } else {
-            if (!buttonTop.classList.contains("visually-hidden")) {
                 buttonTop.classList.add("visually-hidden");
-            }
         }
     }
-
-    function handleClick(event) {
-        if ((window.pageYOffset > 1000) && (buttonTop.contains(event.target))) {
+    
+    function handleClick() {
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
         }
-    }
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("click", handleClick);
     
+    buttonTop.addEventListener("click", handleClick);
+    window.addEventListener("scroll", handleScroll);
+
 })();
-
-
 
 // sign in
 
 (function() {
     let signIn = document.querySelector(".sign-modal_js"),
-        buttonOpen = document.querySelector(".sign-open__js"),
-        buttonClose = document.querySelector(".sign-close__js"),
+        buttonOpen = document.querySelector(".sign-open_js"),
+        buttonClose = document.querySelector(".sign-close_js"),
         inputText = document.querySelector(".input-text-sign_js");
 
-    buttonOpen.addEventListener("click", function() {
+    buttonOpen.addEventListener("click", openSignInPopup);
+
+    function openSignInPopup() {
         signIn.classList.add("sign_open");
         inputText.focus();
-    });
-    buttonClose.addEventListener("click", function() {
+
+        buttonClose.addEventListener("click", closeSignInPopup);
+
+        window.addEventListener("keydown", function (event) {
+            if (event.code === "Escape") {
+                closeSignInPopup()
+            }
+        });
+
+        signIn.addEventListener("click", function (event) {
+            if (event.target === signIn) {
+                closeSignInPopup()
+            }
+        });
+    }
+
+    function closeSignInPopup() {
         signIn.classList.remove("sign_open");
-        inputText.focus();
-    });
-    window.addEventListener("keydown", function (event) {
-        if (event.code === "Escape" && signIn.classList.contains("sign_open")) {
-            signIn.classList.remove("sign_open");
-        }
-    });
-    window.addEventListener("click", function (event) {      
-        if (event.target == signIn) {
-            signIn.classList.remove("sign_open");
-        }
-    })
+        buttonClose.removeEventListener("click", closeSignInPopup);
+    }
 })();
 
 // register
 
 (function() {
     let register = document.querySelector(".register-modal_js"),
-        buttonOpen = document.querySelector(".register-open__js"),
-        buttonClose = document.querySelector(".register-close__js"),
+        buttonOpen = document.querySelector(".register-open_js"),
+        buttonClose = document.querySelector(".register-close_js"),
         inputText = document.querySelector(".input-text-register_js");
 
-    buttonOpen.addEventListener("click", function() {
+    buttonOpen.addEventListener("click", openRegisterPopup);
+
+    function openRegisterPopup() {
         register.classList.add("register_open");
         inputText.focus();
-    });
-    buttonClose.addEventListener("click", function() {
+
+        buttonClose.addEventListener("click", closeRegisterPopup);
+
+        window.addEventListener("keydown", function (event) {
+            if (event.code === "Escape") {
+                closeRegisterPopup()
+            }
+        });
+
+        register.addEventListener("click", function (event) {
+            if (event.target === register) {
+                closeRegisterPopup()
+            }
+        });
+    }
+
+    function closeRegisterPopup() {
         register.classList.remove("register_open");
-        inputText.focus();
-    });
-    window.addEventListener("keydown", function (event) {
-        if (event.code === "Escape" && register.classList.contains("register_open")) {
-            register.classList.remove("register_open");
-        }
-    });
-    window.addEventListener("click", function (event) {      
-        if (event.target == register) {
-            register.classList.remove("register_open");
-        }
-    })
+        buttonClose.removeEventListener("click", closeRegisterPopup);
+    }
 })();
 
 // message
 
 (function() {
     let message = document.querySelector(".message-modal_js"),
-        buttonOpen = document.querySelector(".message-open__js"),
-        buttonClose = document.querySelector(".message-close__js"),
+        buttonOpen = document.querySelector(".message-open_js"),
+        buttonClose = document.querySelector(".message-close_js"),
         inputText = document.querySelector(".input-text-message_js");
 
-        console.log(buttonOpen);
+    buttonOpen.addEventListener("click", openMessagePopup);
 
-    buttonOpen.addEventListener("click", function() {
+    function openMessagePopup() {
         message.classList.add("message_open");
         inputText.focus();
-    });
-    buttonClose.addEventListener("click", function() {
+
+        buttonClose.addEventListener("click", closeMessagePopup);
+
+        window.addEventListener("keydown", function (event) {
+            if (event.code === "Escape") {
+                closeMessagePopup()
+            }
+        });
+
+        message.addEventListener("click", function (event) {
+            if (event.target === message) {
+                closeMessagePopup()
+            }
+        });
+    }
+
+    function closeMessagePopup() {
         message.classList.remove("message_open");
-        inputText.focus();
-    });
-    window.addEventListener("keydown", function (event) {
-        if (event.code === "Escape" && massage.classList.contains("message_open")) {
-            message.classList.remove("message_open");
-        }
-    });
-    window.addEventListener("click", function (event) {      
-        if (event.target == message) {
-            message.classList.remove("message_open");
-        }
-    })
+        buttonClose.removeEventListener("click", closeMessagePopup);
+    }
 })();
 
 // mobile menu

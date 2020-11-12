@@ -19,7 +19,7 @@
         });
 })();
 
-
+// password
 
 (function() {
     let passwordChange = document.querySelector(".password-modal_js"),
@@ -27,22 +27,64 @@
         buttonClose = document.querySelector(".password-close_js"),
         inputText = document.querySelector(".input-text-password_js");
 
-    buttonOpen.addEventListener("click", function() {
+    buttonOpen.addEventListener("click", openPasswordPopup);
+
+    function openPasswordPopup() {
         passwordChange.classList.add("password_open");
         inputText.focus();
-    });
-    buttonClose.addEventListener("click", function() {
+
+        buttonClose.addEventListener("click", closePasswordPopup);
+
+        window.addEventListener("keydown", function (event) {
+            if (event.code === "Escape") {
+                closePasswordPopup()
+            }
+        });
+
+        passwordChange.addEventListener("click", function (event) {
+            if (event.target === passwordChange) {
+                closePasswordPopup()
+            }
+        });
+    }
+
+    function closePasswordPopup() {
         passwordChange.classList.remove("password_open");
+        buttonClose.removeEventListener("click", closePasswordPopup);
+    }
+})();
+
+// data
+
+(function() {
+    let dataChange = document.querySelector(".data-modal_js"),
+        buttonOpen = document.querySelector(".data-open_js"),
+        buttonClose = document.querySelector(".data-close_js"),
+        inputText = document.querySelector(".input-text-data_js");
+
+    buttonOpen.addEventListener("click", openDataPopup);
+
+    function openDataPopup() {
+        dataChange.classList.add("data_open");
         inputText.focus();
-    });
-    window.addEventListener("keydown", function (event) {
-        if (event.code === "Escape" && passwordChange.classList.contains("password_open")) {
-            passwordChange.classList.remove("password_open");
-        }
-    });
-    window.addEventListener("click", function (event) {      
-        if (event.target == passwordChange) {
-            passwordChange.classList.remove("password_open");
-        }
-    })
+
+        buttonClose.addEventListener("click", closeDataPopup);
+
+        window.addEventListener("keydown", function (event) {
+            if (event.code === "Escape") {
+                closedataPopup()
+            }
+        });
+
+        dataChange.addEventListener("click", function (event) {
+            if (event.target === dataChange) {
+                closeDataPopup()
+            }
+        });
+    }
+
+    function closeDataPopup() {
+        dataChange.classList.remove("data_open");
+        buttonClose.removeEventListener("click", closeDataPopup);
+    }
 })();
