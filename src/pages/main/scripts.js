@@ -127,6 +127,8 @@
         buttonCloseMenu = document.querySelector(".button-close-menu_js"),
         mobileMenuFocus = document.querySelector(".mobile-menu-focus_js");
 
+        console.log(mobileMenu);
+
         buttonOpenMenu.addEventListener("click", () => {
             mobileMenu.classList.add("mobile-menu_open");
             mobileMenuFocus.focus();

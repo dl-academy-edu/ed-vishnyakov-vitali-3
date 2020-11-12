@@ -1,0 +1,181 @@
+@import "../colors";
+@import "../vars.scss";
+@import "../mixins.scss";
+
+.popup-profile {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background-color: $c_grey-2;
+
+  @include media_interval(0, $media_mobile) {
+    background-color: $c_white;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+
+    background-color: $c_white;
+
+    padding: 38px;
+
+    width: 680px;
+
+    position: relative;
+
+    margin: auto;
+
+    border: 2.5px solid $c_black;
+
+    @include media_interval(0, $media_mobile) {
+      border: none;
+
+      padding: 82px 20px;
+    }
+
+    &-lable {
+      display: flex;
+      flex-direction: column-reverse;
+
+      margin-bottom: 20px;
+    }
+
+    &-input {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 21px;
+
+      border: 2.5px solid $c_grey-3;
+
+      padding: 12px;
+
+      cursor: pointer;
+
+      transition: $tr_duration $tr_easing;
+
+      &:hover {
+        border: 2.5px solid $c_grey;
+
+        outline: none;
+      }
+
+      &:active,
+      &:focus {
+        border: 2.5px solid $c_black;
+
+        outline: none;
+      }
+    }
+
+    &-text {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+
+      margin-bottom: 7px;
+    }
+
+    &-feedback {
+      display: flex;
+      justify-content: space-between;
+
+      @include media_interval(0, $media_mobile) {
+        flex-wrap: wrap;
+      }
+    }
+
+    &-left-input {
+      margin-right: 10px;
+      width: 100%;
+
+      @include media_interval(0, $media_mobile) {
+        margin-right: 0;
+      }
+    }
+
+    &-right-input {
+      margin-left: 10px;
+      width: 100%;
+
+      @include media_interval(0, $media_mobile) {
+        margin-left: 0;
+      }
+    }
+
+    &-picture-input {
+      width: 48%;
+
+      @include media_interval(0, $media_mobile) {
+        width: 100%;
+      }
+    }
+
+    &-button {
+      align-self: start;
+      margin: 10px 0 0;
+    }
+  }
+
+  &__form-close {
+    position: absolute;
+    top: -3px;
+    right: -39px;
+    cursor: pointer;
+
+    width: 25px;
+    height: 25px;
+
+    border: none;
+
+    background: url(/static/images/Close.svg);
+
+    transition: $tr_duration $tr_easing;
+
+    @include media_interval($media_mobile, $media_tablet) {
+      top: -37px;
+      right: -3px;
+    }
+
+    @include media_interval(0, $media_mobile) {
+      top: 36px;
+      left: 20px;
+    }
+
+    &:hover,
+    &:active {
+      background: url(/static/images/Close_black.svg);
+    }
+  }
+}
+
+.password,
+.data {
+  display: none;
+
+  &_open {
+    display: flex;
+
+    animation: animate 0.3s;
+
+    @keyframes animate {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @include media_interval(0, $media_mobile-medium) {
+      padding: 0 20px;
+    }
+  }
+}

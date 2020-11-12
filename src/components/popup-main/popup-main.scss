@@ -2,9 +2,7 @@
 @import "../vars.scss";
 @import "../mixins.scss";
 
-.modal {
-  display: none;
-
+.popup-main {
   position: fixed;
   top: 0;
   bottom: 0;
