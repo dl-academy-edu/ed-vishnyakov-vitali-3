@@ -139,8 +139,6 @@
         buttonCloseMenu = document.querySelector(".button-close-menu_js"),
         mobileMenuFocus = document.querySelector(".mobile-menu-focus_js");
 
-        console.log(mobileMenu);
-
         buttonOpenMenu.addEventListener("click", () => {
             mobileMenu.classList.add("mobile-menu_open");
             mobileMenuFocus.focus();
@@ -151,4 +149,195 @@
             mobileMenuFocus.focus();
         });
 })();
+
+// validation
+
+function checkEmail(email) {
+    return email.match(/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i);
+}
+
+function checkPhone(phone) {
+    return phone.match(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/);
+}
+
+function inputSetInvalid(input) {
+    if(input.hasAttribute("isInvalid")) {
+        return;
+    }
+    input.setAttribute("isInvalid", "");
+    function handel() {
+        input.classList.remove("isInvalid");
+        input.removeAttribute("isInvalid");
+    }
+    input.classList.add("isInvalid");
+    input.addEventListener("input", handel);
+}
+
+function inputSetInvalidFeedback(input, error) {
+    if(input.hasAttribute("invalidFeedback")) {
+        return;
+    }
+    input.setAttribute("invalidFeedback", "");
+    function handel() {
+        message.remove();
+        input.removeEventListener("input", handel);
+        input.removeAttribute("invalidFeedback");
+    }
+    const message = document.createElement("span");
+    message.classList.add("invalidFeedback");
+    message.innerText = error;
+    input.insertAdjacentElement("afterend", message);
+    input.addEventListener("input", handel);
+}
+
+function inputSetNormal(input) {
+    if(input.hasAttribute("isNormal")) {
+        return;
+    }
+    input.setAttribute("isNormal", "");
+    function handel() {
+        input.classList.remove("isNormal");
+        input.removeAttribute("isNormal");
+    }
+    input.classList.add("isNormal");
+    input.addEventListener("input", handel);
+}
+
+function inputSetNormalFeedback(input) {
+    if(input.hasAttribute("normalFeedback")) {
+        return;
+    }
+    input.setAttribute("normalFeedback", "");
+    function handel() {
+        message.remove();
+        input.removeEventListener("input", handel);
+        input.removeAttribute("normalFeedback");
+    }
+    const message = document.createElement("span");
+    message.classList.add("normalFeedback");
+    message.innerText = "All right";
+    input.insertAdjacentElement("afterend", message);
+    input.addEventListener("input", handel);
+}
+
+function setFormError(form, errors) {
+    let inputs = form.querySelectorAll("input");
+    for (let input of inputs) {
+        if(errors[input.name]) {
+            inputSetInvalid(input);
+            inputSetInvalidFeedback(input, errors[input.name]);
+        } else {
+            inputSetNormal(input);
+            inputSetNormalFeedback(input);
+        }
+    }
+    let textareas = form.querySelectorAll("textarea");
+    for (let textarea of textareas) {
+        if(errors[textarea.name]) {
+            inputSetInvalid(textarea);
+            inputSetInvalidFeedback(input, errors[input.name]);
+        }
+    }
+}
+
+function getFormData(form, data = {}) {
+    let inputs = form.querySelectorAll("input");
+    for (let input of inputs) {
+        switch (input.type) {
+            case "radio":
+                if (input.checked) {
+                    data[input.name] = input.value;
+                }
+                break;
+            case "checkbox":
+                if (!data[input.name]) {
+                    data[input.name] = [];
+                }
+                if (input.checked) {
+                    data[input.name].push(input.value);
+                }
+                break;
+            case "file":
+                data[input.name] = input.files;
+                break;
+            default:
+                data[input.name] = input.value;
+                break;
+        }
+    }
+    let textareas = form.querySelectorAll("textarea");
+    for (let textarea of textareas) {
+        data[textarea.name] = textarea.value;
+    }
+    return data;
+}
+
+(function () {
+    const form = document.forms.signIn;
+
+    console.log(form);
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const data = getFormData(event.target);
+        const errors = validateData(data);
+        if (Object.keys(errors).length) {
+            setFormError(form, errors);
+        }
+        console.log(data);
+    });
+    function validateData(data, errors = {}) {
+        if(!checkEmail(data.email)) {
+            errors.email = "Please enter a valid email address";
+        }
+        if(data.password.length < 8) {
+            errors.password = "Пароль слишком короткий";
+        }
+        return errors;
+    }
+})();
+
+(function () {
+    const form = document.forms.register;
+
+    console.log(form);
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const data = getFormData(event.target);
+        const errors = validateData(data);
+        if (Object.keys(errors).length + 1) {
+            setFormError(form, errors);
+        }
+        console.log(errors);
+    });
+    function validateData(data, errors = {}) {
+        if(!checkEmail(data.email)) {
+            errors.email = "Please enter a valid email address";
+        }
+        if(!data.name) {
+            errors.name = "Неверное имя";
+        }
+        if(!data.surname) {
+            errors.surname = "Неверная фамилия";
+        }
+        if(data.password.length < 8) {
+            errors.password = "Слишком короткий пароль";
+        }
+        if((data.password !== data["repeat-password"]) || (data["repeat-password"] === "")) {
+            errors["repeat-password"] = "Неверный пароль";
+        }
+        if(data.location === "") {
+            errors.location = "Ваше местоположения";
+        }  
+        if(+data.age === "") {
+            errors.age = "Ваш возраст";
+        }  
+        // if(data.consent[0] !== "consent") {
+        //     errors.consent = "Необходимо дать согласие";
+        // }
+        return errors;
+    }
+})();
+
 

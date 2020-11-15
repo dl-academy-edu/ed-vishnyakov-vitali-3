@@ -6,8 +6,6 @@
         buttonCloseMenu = document.querySelector(".button-close-menu_js"),
         mobileMenuFocus = document.querySelector(".mobile-menu-focus_js");
 
-        console.log(buttonOpenMenu);
-
         buttonOpenMenu.addEventListener("click", () => {
             mobileMenu.classList.add("mobile-menu_open");
             mobileMenuFocus.focus();
@@ -72,7 +70,7 @@
 
         window.addEventListener("keydown", function (event) {
             if (event.code === "Escape") {
-                closedataPopup()
+                closeDataPopup()
             }
         });
 
