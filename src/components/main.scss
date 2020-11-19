@@ -72,7 +72,7 @@ html {
 }
 
 img {
-  max-width: 100%;
+  // max-width: 100%;
 
   line-height: 0;
 }
@@ -99,7 +99,7 @@ button {
 
 .button,
 .link {
-  // background-color: $c_white;
+  background-color: $c_white;
 
   border: 2.5px solid $c_black;
   border-radius: 30px;
@@ -136,8 +136,13 @@ fieldset {
   transition: opacity $tr_duration $tr_easing;
 
   &:hover,
-  &:focus {
+  &:active {
     opacity: 0.5;
+  }
+
+  &:disabled {
+    opacity: 0.1;
+    cursor: no-drop;
   }
 }
 

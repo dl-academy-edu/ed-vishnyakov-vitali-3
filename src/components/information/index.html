@@ -13,51 +13,44 @@
             </button>
         </div>
         <div class="information__slider">
-            <div class="information__slide">
-                <div class="information__slide">
-                    <picture class="information__slide-picture">
-                        <source srcset="/static/images/foto-bio-1.jpg, /static/images/foto-bio-1_retina.jpg 2x" media="(min-width: 1024px)">
-                        <source srcset="/static/images/foto-bio-1_tablet.jpg" media="(min-width: 768px) and (max-width: 1023px)">
-                        <source srcset="/static/images/foto-bio-1_mobile.jpg" media="(max-width: 767px)">
-                        <img class="information__slide-img" src="/static/images/foto-bio-1.jpg" alt="фотография">
-                    </picture>
+            <div class="information__slider-wrapper">
+                <div class="information__slider-inner">
+                    <div class="information__slider-slide">
+                        <picture class="information__slide-picture">
+                            <source srcset="/static/images/foto-bio-1.jpg, /static/images/foto-bio-1_retina.jpg 2x" media="(min-width: 1024px)">
+                            <source srcset="/static/images/foto-bio-1_tablet.jpg" media="(min-width: 768px) and (max-width: 1023px)">
+                            <source srcset="/static/images/foto-bio-1_mobile.jpg" media="(max-width: 767px)">
+                            <img class="information__slide-img" src="/static/images/foto-bio-1.jpg" alt="фотография">
+                        </picture>
+                    </div>
+                    <div class="information__slider-slide">
+                        <picture class="information__slide-picture">
+                            <source srcset="/static/images/foto-bio-1.jpg, /static/images/foto-bio-1_retina.jpg 2x" media="(min-width: 1024px)">
+                            <source srcset="/static/images/foto-bio-1_tablet.jpg" media="(min-width: 768px) and (max-width: 1023px)">
+                            <source srcset="/static/images/foto-bio-1_mobile.jpg" media="(max-width: 767px)">
+                            <img class="information__slide-img" src="/static/images/foto-bio-1.jpg" alt="фотография">
+                        </picture>
+                    </div>
+                    <div class="information__slider-slide">
+                        <picture class="information__slide-picture">
+                            <source srcset="/static/images/foto-bio-1.jpg, /static/images/foto-bio-1_retina.jpg 2x" media="(min-width: 1024px)">
+                            <source srcset="/static/images/foto-bio-1_tablet.jpg" media="(min-width: 768px) and (max-width: 1023px)">
+                            <source srcset="/static/images/foto-bio-1_mobile.jpg" media="(max-width: 767px)">
+                            <img class="information__slide-img" src="/static/images/foto-bio-1.jpg" alt="фотография">
+                        </picture>
+                    </div>
                 </div>
             </div>
-            <div class="information__pagination">
-                <button class="pagination-nav">
+            <div class="information__pagination-nav">
+                <button class="pagination-nav pagination-prev">
                     <svg class="information__pagination-svg" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="40.75" y="40.75" width="39.5" height="39.5" rx="19.75" transform="rotate(-180 40.75 40.75)" stroke="#070707" stroke-width="2.5" />
                         <rect x="24.5791" y="32.6992" width="16.5512" height="3" rx="1.5" transform="rotate(-135 24.5791 32.6992)" fill="#070707" />
                         <rect x="26.7002" y="11.4199" width="16.5512" height="3" rx="1.5" transform="rotate(135 26.7002 11.4199)" fill="#070707" />
                     </svg>
                 </button>
-                <ul class="information__dots">
-                    <li class="information__dots-item">
-                        <label class="information__dots-label">
-                            <input class="information__dots-radio hidden" type="radio" name="pagination" value="1">
-                            <span class="information__dots-fake"></span>
-                        </label>
-                    </li>
-                    <li class="information__dots-item">
-                        <label class="information__dots-label">
-                            <input class="information__dots-radio hidden" type="radio" name="pagination" value="2">
-                            <span class="information__dots-fake"></span>
-                        </label>
-                    </li>
-                    <li class="information__dots-item">
-                        <label class="information__dots-label">
-                            <input class="information__dots-radio hidden" type="radio" name="pagination" value="3">
-                            <span class="information__dots-fake"></span>
-                        </label>
-                    </li>
-                    <li class="information__dots-item">
-                        <label class="information__dots-label">
-                            <input class="information__dots-radio hidden" type="radio" name="pagination" value="4">
-                            <span class="information__dots-fake"></span>
-                        </label>
-                    </li>
-                </ul>
-                <button class="pagination-nav">
+                <div class="information__pagination"></div>
+                <button class="pagination-nav pagination-next">
                     <svg class="information__pagination-svg" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1.25" y="1.25006" width="39.5" height="39.5" rx="19.75" stroke="#070707" stroke-width="2.5" />
                         <rect x="17.4209" y="9.30084" width="16.5512" height="3" rx="1.5" transform="rotate(45 17.4209 9.30084)" fill="#070707" />
