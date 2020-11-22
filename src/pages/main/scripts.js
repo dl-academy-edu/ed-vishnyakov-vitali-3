@@ -26,7 +26,26 @@
 
 })();
 
-// sign in
+// mobile menu
+
+(function() {
+    let mobileMenu = document.querySelector(".mobile-menu"),
+        buttonOpenMenu = document.querySelector(".button-open-menu_js"),
+        buttonCloseMenu = document.querySelector(".button-close-menu_js"),
+        mobileMenuFocus = document.querySelector(".mobile-menu-focus_js");
+
+        buttonOpenMenu.addEventListener("click", () => {
+            mobileMenu.classList.add("mobile-menu_open");
+            mobileMenuFocus.focus();
+        });
+
+        buttonCloseMenu.addEventListener("click", () => {
+            mobileMenu.classList.remove("mobile-menu_open");
+            mobileMenuFocus.focus();
+        });
+})();
+
+// sign in popup
 
 (function() {
     let signIn = document.querySelector(".sign-modal_js"),
@@ -61,7 +80,7 @@
     }
 })();
 
-// register
+// register popup
 
 (function() {
     let register = document.querySelector(".register-modal_js"),
@@ -96,7 +115,7 @@
     }
 })();
 
-// message
+// message popup
 
 (function() {
     let message = document.querySelector(".message-modal_js"),
@@ -129,25 +148,6 @@
         message.classList.remove("message_open");
         buttonClose.removeEventListener("click", closeMessagePopup);
     }
-})();
-
-// mobile menu
-
-(function() {
-    let mobileMenu = document.querySelector(".mobile-menu"),
-        buttonOpenMenu = document.querySelector(".button-open-menu_js"),
-        buttonCloseMenu = document.querySelector(".button-close-menu_js"),
-        mobileMenuFocus = document.querySelector(".mobile-menu-focus_js");
-
-        buttonOpenMenu.addEventListener("click", () => {
-            mobileMenu.classList.add("mobile-menu_open");
-            mobileMenuFocus.focus();
-        });
-
-        buttonCloseMenu.addEventListener("click", () => {
-            mobileMenu.classList.remove("mobile-menu_open");
-            mobileMenuFocus.focus();
-        });
 })();
 
 // validation
@@ -186,7 +186,7 @@ function inputSetInvalidFeedback(input, error) {
     const message = document.createElement("span");
     message.classList.add("invalidFeedback");
     message.innerText = error;
-    input.insertAdjacentElement("afterend", message);
+    input.insertAdjacentElement("beforebegin", message);
     input.addEventListener("input", handel);
 }
 
@@ -216,7 +216,7 @@ function inputSetNormalFeedback(input) {
     const message = document.createElement("span");
     message.classList.add("normalFeedback");
     message.innerText = "All right";
-    input.insertAdjacentElement("afterend", message);
+    input.insertAdjacentElement("beforebegin", message);
     input.addEventListener("input", handel);
 }
 
@@ -279,7 +279,7 @@ function getFormData(form, data = {}) {
         event.preventDefault();
         const data = getFormData(event.target);
         const errors = validateData(data);
-        if (Object.keys(errors).length) {
+        if (Object.keys(errors).length + 1) {
             setFormError(form, errors);
         }
     });
@@ -288,7 +288,7 @@ function getFormData(form, data = {}) {
             errors.email = "Please enter a valid email address";
         }
         if(data.password.length < 8) {
-            errors.password = "Пароль слишком короткий";
+            errors.password = "Short password";
         }
         return errors;
     }
@@ -304,32 +304,33 @@ function getFormData(form, data = {}) {
         if (Object.keys(errors).length + 1) {
             setFormError(form, errors);
         }
-        console.log(errors);
     });
     function validateData(data, errors = {}) {
         if(!checkEmail(data.email)) {
             errors.email = "Please enter a valid email address";
         }
         if(!data.name) {
-            errors.name = "Неверное имя";
+            errors.name = "Wrong name";
         }
         if(!data.surname) {
-            errors.surname = "Неверная фамилия";
+            errors.surname = "Wrong last name";
         }
-        if(data.password.length < 8) {
-            errors.password = "Слишком короткий пароль";
+        if (data.password === "") {
+            errors.password = "Нужно ввести пароль";
+        } else if (data.password.length < 8) {
+            errors.password = "Short password"
         }
-        if((data.password !== data["repeat-password"]) || (data["repeat-password"] === "")) {
-            errors["repeat-password"] = "Неверный пароль";
+        if (data.repeatPassword !== data.password || data.repeatPassword === "") {
+            errors.repeatPassword = "Пароль не совпал";
         }
         if(data.location === "") {
-            errors.location = "Ваше местоположения";
+            errors.location = "Enter city";
         }  
-        if(+data.age === "") {
-            errors.age = "Ваш возраст";
-        }  
-        // if(data.consent[0] !== "consent") {
-        //     errors.consent = "Необходимо дать согласие";
+        if (+(data.age) <= 0) {
+            errors.age = "Age is incorrect";
+        } 
+        // if(data.subscribe[0] !== "subscribe") {
+        //     errors.subscribe = "Необходимо дать согласие";
         // }
         return errors;
     }
@@ -346,8 +347,6 @@ function getFormData(form, data = {}) {
     const buttonNext = slider.querySelector(".pagination-next");
     const slides = [...wrapper.querySelectorAll(".information__slider-slide")];
     const aniTime = 500;
-
-
 
     let activeSlide = 0;
     let slideWidth = 0;

@@ -11,6 +11,8 @@
 
   background-color: $c_grey-2;
 
+  z-index: 111;
+
   @include media_interval(0, $media_mobile) {
     background-color: $c_white;
   }
@@ -47,7 +49,7 @@
       display: flex;
       flex-direction: column-reverse;
 
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     &-input {
@@ -75,6 +77,10 @@
         border: 2.5px solid $c_black;
 
         outline: none;
+      }
+
+      label input {
+        display: none;
       }
     }
 
@@ -158,6 +164,58 @@
       background: url(/static/images/Close_black.svg);
     }
   }
+
+  &__form-file {
+    position: relative;
+    text-align: center;
+
+    &--title {
+      position: absolute;
+      top: -3px;
+      left: 0;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+    &--hide {
+      position: absolute;
+    }
+
+    &--icon {
+      margin-right: 10px;
+    }
+
+    &--text {
+      line-height: 1;
+      margin-top: 1px;
+      color: black;
+      display: block;
+      margin: 0;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+    }
+
+    &--img {
+      display: block;
+    }
+
+    &--label {
+      width: 44%;
+
+      display: flex;
+      align-items: center;
+
+      cursor: pointer;
+      border: 2.5px solid $c_grey-3;
+      flex-direction: row;
+      margin: 20px 0;
+      padding: 11px;
+    }
+  }
 }
 
 .password,
@@ -183,7 +241,6 @@
     }
   }
 }
-
 .isInvalid {
   border: 2.5px solid $c_red;
 
@@ -197,15 +254,12 @@
 .invalidFeedback {
   color: $c_red;
 
-  display: flex;
-
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
   text-align: left;
 
-  margin-top: -16px;
-  margin-bottom: 5px;
+  margin: 0 0 -16px;
 }
 
 .isNormal {
@@ -221,13 +275,10 @@
 .normalFeedback {
   color: $c_green;
 
-  display: flex;
-
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
   text-align: left;
 
-  margin-top: -16px;
-  margin-bottom: 5px;
+  margin: 0 0 -16px;
 }

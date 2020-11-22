@@ -11,6 +11,8 @@
 
   background-color: $c_grey-2;
 
+  z-index: 111;
+
   &__form {
     display: flex;
     flex-direction: column;
@@ -289,4 +291,46 @@
       }
     }
   }
+}
+
+.isInvalid {
+  border: 2.5px solid $c_red;
+
+  &:hover,
+  &:focus {
+    border: 2.5px solid $c_red;
+    cursor: pointer;
+  }
+}
+
+.invalidFeedback {
+  color: $c_red;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+
+  margin: 0 0 -16px;
+}
+
+.isNormal {
+  border: 2.5px solid $c_green;
+
+  &:hover,
+  &:focus {
+    border: 2.5px solid $c_green;
+    cursor: pointer;
+  }
+}
+
+.normalFeedback {
+  color: $c_green;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+
+  margin: 0 0 -16px;
 }
