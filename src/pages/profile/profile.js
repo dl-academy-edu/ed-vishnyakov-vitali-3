@@ -243,7 +243,7 @@ function getFormData(form, data = {}) {
         event.preventDefault();
         const data = getFormData(event.target);
         const errors = validateData(data);
-        if (Object.keys(errors).length) {
+        if (Object.keys(errors).length + 1) {
             setFormError(form, errors);
         }
     });
@@ -256,12 +256,6 @@ function getFormData(form, data = {}) {
         }
         if(!data.surname) {
             errors.surname = "Wrong last name";
-        }
-        if(data.password.length < 8) {
-            errors.password = "Short password";
-        }
-        if(data.password!=data.repeatPassword) {
-            errors.password = "password does not match.";
         }
         if(data.location === "") {
             errors.location = "Enter city";

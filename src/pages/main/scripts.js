@@ -326,108 +326,156 @@ function getFormData(form, data = {}) {
         if(data.location === "") {
             errors.location = "Enter city";
         }  
-        if (+(data.age) <= 0) {
+        if (isNaN(data.age)  || data.age === "") {
             errors.age = "Age is incorrect";
         } 
-        // if(data.subscribe[0] !== "subscribe") {
-        //     errors.subscribe = "Необходимо дать согласие";
-        // }
+        if(data.subscribe[0] !== "yes") {
+            errors.subscribe = "Необходимо дать согласие";
+        }
         return errors;
     }
 })();
 
-// information__slider
+(function () {
+    const form = document.forms.message;
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const data = getFormData(event.target);
+        const errors = validateData(data);
+        if (Object.keys(errors).length + 1) {
+            setFormError(form, errors);
+        }
+    });
+    function validateData(data, errors = {}) {
+        if(!data.name) {
+            errors.name = "Wrong name";
+        }
+
+        if(!data.messageSubject) {
+            errors.messageSubject = "Enter the subject of the message";
+        }
+        
+        if(!checkEmail(data.email)) {
+            errors.email = "Please enter a valid email address";
+        }
+
+        if(!checkEmail(data.phone)) {
+            errors.phone = "Please enter a valid phone number";
+        }
+        if(data.subscribe[0] !== "yes") {
+            errors.subscribe = "Необходимо дать согласие";
+        }
+        return errors;
+    }
+})();
+
+// sliders
 
 (function () {
-    const slider = document.querySelector(".information__slider")
-    const wrapper = slider.querySelector(".information__slider-wrapper");
-    const inner = wrapper.querySelector(".information__slider-inner");
-    const paginationDots = slider.querySelector(".information__pagination");
-    const buttonPrev = slider.querySelector(".pagination-prev");
-    const buttonNext = slider.querySelector(".pagination-next");
-    const slides = [...wrapper.querySelectorAll(".information__slider-slide")];
-    const aniTime = 500;
+    const option = {
+        sliderEl: ".information__slider",
+        defaultActiveSlide: +localStorage.getItem("activeSlide") || 0,
+    };
+    const sliderBox = slider(option);
 
-    let activeSlide = 0;
-    let slideWidth = 0;
-    let dots = [];
-    let timerId = null;
-
-    initSlidesWidth();
-    createPagination();
-    setActiveSlide(0, false);
-
-    window.addEventListener("resize", function() {
+    function slider({sliderEl, defaultActiveSlide = 0}) {
+        const slider = document.querySelector(sliderEl);
+        const wrapper = slider.querySelector(".information__slider-wrapper");
+        const inner = wrapper.querySelector(".information__slider-inner");
+        const paginationDots = slider.querySelector(".information__pagination");
+        const buttonPrev = slider.querySelector(".pagination-prev");
+        const buttonNext = slider.querySelector(".pagination-next");
+        const slides = [...wrapper.querySelectorAll(".information__slider-slide")];
+        const aniTime = 500;
+    
+        let activeSlide = defaultActiveSlide;
+        let slideWidth = 0;
+        let dots = [];
+        let timerId = null;
+    
         initSlidesWidth();
+        createPagination();
         setActiveSlide(activeSlide, false);
-    });
-
-    function addAnimation(duration) {
-        clearTimeout(timerId);
-        inner.style.transition = `transform ${duration}ms`;
-        timerId = setTimeout(function () {
-            inner.style.transition = "";
-        }, duration);
-    }
-
-    function createPagination() {
-        for(let i = 0; i < slides.length; i++) {
-            let dot = createDot(i);
-            paginationDots.insertAdjacentElement("beforeend", dot);
-            dots.push(dot);
-        }
-    }
-
-    function createDot(index) {
-        let dot  = document.createElement("button");
-        dot.classList.add("information__pagination-dot");
-        if(index === activeSlide) {
-            dot.classList.add("information__pagination-dot-active");
-        }
-        dot.addEventListener("click", function () {
-            setActiveSlide(index);
-        })
-        return dot;
-    }
-
-    function initSlidesWidth () {
-        slideWidth =  wrapper.clientWidth;
-        slides.forEach(slide => {
-            slide.style.width = `${slideWidth}px`;
+    
+        window.addEventListener("resize", function() {
+            initSlidesWidth();
+            setActiveSlide(activeSlide, false);
         });
-    }
-    function setActiveSlide(index, playAnimation = true) {
-
-        buttonNext.removeAttribute("disabled");
-        if(index < 0 || index >= slides.length){
-            return;
+    
+        function addAnimation(duration) {
+            clearTimeout(timerId);
+            inner.style.transition = `transform ${duration}ms`;
+            timerId = setTimeout(function () {
+                inner.style.transition = "";
+            }, duration);
         }
-        if(playAnimation) {
-            addAnimation(aniTime);
+    
+        function createPagination() {
+            for(let i = 0; i < slides.length; i++) {
+                let dot = createDot(i);
+                paginationDots.insertAdjacentElement("beforeend", dot);
+                dots.push(dot);
+            }
         }
-        dots[activeSlide].classList.remove("information__pagination-dot-active");
-        dots[index].classList.add("information__pagination-dot-active");
-        
-        if(index === 0) {
-            buttonPrev.setAttribute("disabled", "");
-        } else {
-            buttonPrev.removeAttribute("disabled");
+    
+        function createDot(index) {
+            let dot  = document.createElement("button");
+            dot.classList.add("information__pagination-dot");
+            if(index === activeSlide) {
+                dot.classList.add("information__pagination-dot-active");
+            }
+            dot.addEventListener("click", function () {
+                setActiveSlide(index);
+            })
+            return dot;
         }
-        if(index === slides.length - 1) {
-            buttonNext.setAttribute("disabled", "");
-        } else {
+    
+        function initSlidesWidth () {
+            slideWidth =  wrapper.clientWidth;
+            slides.forEach(slide => {
+                slide.style.width = `${slideWidth}px`;
+            });
+        }
+        function setActiveSlide(index, playAnimation = true) {
+    
             buttonNext.removeAttribute("disabled");
+            if(index < 0 || index >= slides.length){
+                return;
+            }
+            if(playAnimation) {
+                addAnimation(aniTime);
+            }
+            dots[activeSlide].classList.remove("information__pagination-dot-active");
+            dots[index].classList.add("information__pagination-dot-active");
+            
+            if(index === 0) {
+                buttonPrev.setAttribute("disabled", "");
+            } else {
+                buttonPrev.removeAttribute("disabled");
+            }
+            if(index === slides.length - 1) {
+                buttonNext.setAttribute("disabled", "");
+            } else {
+                buttonNext.removeAttribute("disabled");
+            }
+            inner.style.transform = `translateX(-${slideWidth * index}px)`;
+            activeSlide = index; 
+            localStorage.setItem("activeSlide", activeSlide)
         }
-        inner.style.transform = `translateX(-${slideWidth * index}px)`;
-        activeSlide = index; 
+        buttonPrev.addEventListener("click", function () {
+            setActiveSlide(activeSlide - 1);
+        });
+    
+        buttonNext.addEventListener("click", function () {
+            setActiveSlide(activeSlide + 1);
+        });
+    
+        return {
+            setActiveSlide: setActiveSlide,
+        }
     }
-    buttonPrev.addEventListener("click", function () {
-        setActiveSlide(activeSlide - 1);
-    });
 
-    buttonNext.addEventListener("click", function () {
-        setActiveSlide(activeSlide + 1);
-    });
 })();
 
 (function () {
