@@ -330,7 +330,7 @@ function getFormData(form, data = {}) {
             errors.age = "Age is incorrect";
         } 
         if(data.subscribe[0] !== "yes") {
-            errors.subscribe = "Необходимо дать согласие";
+            errors.subscribe = "Поставьте галочку";
         }
         return errors;
     }

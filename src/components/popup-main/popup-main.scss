@@ -173,6 +173,7 @@
 
         &:checked + .popup-main__form-subscribe--fake::before {
           opacity: 1;
+          pointer-events: auto;
         }
       }
 

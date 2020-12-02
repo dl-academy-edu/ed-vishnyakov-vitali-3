@@ -3,7 +3,7 @@
 @import "../mixins.scss";
 
 .header {
-  margin: 33px auto 40px;
+  margin: 33px auto 39px;
 
   @include media_interval($media_mobile, $media_tablet) {
     margin: 35px auto 38px;
@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-between;
 
-    margin-bottom: 31px;
+    margin-bottom: 32px;
   }
 
   &__main {

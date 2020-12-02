@@ -10,7 +10,7 @@
     justify-content: space-between;
 
     @include media_interval(0, $media_mobile) {
-      margin-top: 30px;
+      margin-top: 28px;
     }
   }
 
@@ -35,17 +35,18 @@
     }
   }
   &__form {
-    display: flex;
-    flex-wrap: wrap;
+    &-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
 
-    margin-bottom: 23px;
+      @include media_interval($media_mobile, $media_tablet) {
+        margin-bottom: 30px;
+      }
 
-    @include media_interval($media_mobile, $media_tablet) {
-      margin-bottom: 29px;
-    }
-
-    @include media_interval(0, $media_mobile) {
-      margin-bottom: 32px;
+      @include media_interval(0, $media_mobile) {
+        margin-bottom: 31px;
+      }
     }
   }
 
@@ -72,8 +73,8 @@
   }
 
   &__tags {
-    margin-right: 73px;
-    max-width: 120px;
+    margin-right: 68px;
+    max-width: 125px;
 
     @include media_interval($media_mobile, $media_tablet) {
       margin: 20px 47px 0 0;
@@ -86,6 +87,11 @@
 
       order: 5;
     }
+  }
+
+  &__tags-box {
+    display: flex;
+    flex-wrap: wrap;
   }
   &__input-checkbox {
     display: none;
@@ -139,73 +145,76 @@
       margin: 2px 0 0px 3px;
 
       transition: opacity $tr_duration $tr_easing;
+
+      background: url("data:image/svg+xml;charset=UTF-8,%3csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M2 6.75L5.91301 12.77C6.20128 13.2135 6.85836 13.1893 7.11327 12.7259L13.425 1.25' stroke='%23070707' stroke-width='2.5' stroke-linecap='round'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
     }
 
-    &--dark-blue {
-      color: $checkbox_dark-blue;
-      &::before {
-        background: url(/static/images/check_mark_dark-blue.svg);
-        background-repeat: no-repeat;
-      }
-    }
-    &--blue {
-      color: $checkbox_blue;
-      &::before {
-        background: url(/static/images/check_mark_blue.svg);
-        background-repeat: no-repeat;
-      }
-    }
-    &--yellow {
-      color: $checkbox_yellow;
-      &::before {
-        background: url(/static/images/check_mark_yellow.svg);
-        background-repeat: no-repeat;
-      }
-    }
-    &--turquoise {
-      color: $checkbox_turquoise;
-      &::before {
-        background: url(/static/images/check_mark_turquoise.svg);
-        background-repeat: no-repeat;
-      }
-    }
-    &--orange {
-      color: $checkbox_orange;
-      &::before {
-        background: url(/static/images/check_mark_orange.svg);
-        background-repeat: no-repeat;
-      }
-    }
-    &--pink {
-      color: $checkbox_pink;
-      &::before {
-        background: url(/static/images/check_mark_pink.svg);
-        background-repeat: no-repeat;
-      }
-    }
+    // &--2176FF {
+    //   color: $checkbox_dark-blue;
+    //   &::before {
+    //     background: url(/static/images/check_mark_dark-blue.svg);
+    //     background-repeat: no-repeat;
+    //   }
+    // }
+    // &--blue {
+    //   color: $checkbox_blue;
+    //   &::before {
+    //     background: url(/static/images/check_mark_blue.svg);
+    //     background-repeat: no-repeat;
+    //   }
+    // }
+    // &--yellow {
+    //   color: $checkbox_yellow;
+    //   &::before {
+    //     background: url(/static/images/check_mark_yellow.svg);
+    //     background-repeat: no-repeat;
+    //   }
+    // }
+    // &--turquoise {
+    //   color: $checkbox_turquoise;
+    //   &::before {
+    //     background: url(/static/images/check_mark_turquoise.svg);
+    //     background-repeat: no-repeat;
+    //   }
+    // }
+    // &--orange {
+    //   color: $checkbox_orange;
+    //   &::before {
+    //     background: url(/static/images/check_mark_orange.svg);
+    //     background-repeat: no-repeat;
+    //   }
+    // }
+    // &--pink {
+    //   color: $checkbox_pink;
+    //   &::before {
+    //     background: url(/static/images/check_mark_pink.svg);
+    //     background-repeat: no-repeat;
+    //   }
+    // }
 
-    &--purple {
-      color: $checkbox_purple;
-      &::before {
-        background: url(/static/images/check_mark_purple.svg);
-        background-repeat: no-repeat;
-      }
-    }
-    &--green {
-      color: $checkbox_green;
-      &::before {
-        background: url(/static/images/check_mark_green.svg);
-        background-repeat: no-repeat;
-      }
-    }
+    // &--purple {
+    //   color: $checkbox_purple;
+    //   &::before {
+    //     background: url(/static/images/check_mark_purple.svg);
+    //     background-repeat: no-repeat;
+    //   }
+    // }
+    // &--green {
+    //   color: $checkbox_green;
+    //   &::before {
+    //     background: url(/static/images/check_mark_green.svg);
+    //     background-repeat: no-repeat;
+    //   }
+    // }
 
-    &--black {
-      color: $c_black;
-      &::before {
-        background: url(/static/images/check_mark_black.svg);
-        background-repeat: no-repeat;
-      }
-    }
+    // &--black {
+    //   color: $c_black;
+    //   &::before {
+    //     background: url(/static/images/check_mark_black.svg);
+    //     background-repeat: no-repeat;
+    //   }
+    // }
   }
 
   &__views {
@@ -259,6 +268,10 @@
 
   &__checkbox-item {
     margin-bottom: 6px;
+
+    &--tags {
+      margin-right: 6px;
+    }
   }
 
   &__comments {
@@ -322,6 +335,7 @@
   &__search-wrapper {
     display: flex;
     justify-content: space-between;
+    align-self: center;
 
     @include media_interval(0, $media_mobile) {
       flex-wrap: wrap;
@@ -353,7 +367,7 @@
   }
 
   &__search-button {
-    margin: 5px 0 3px 30px;
+    margin: 3px 0 3px 30px;
 
     @include media_interval(0, $media_mobile) {
       margin: 20px 0 0 182px;
