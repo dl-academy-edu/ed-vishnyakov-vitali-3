@@ -1,0 +1,35 @@
+<section class="message popup-main message-modal_js">
+    <form class="popup-main__form " action="/" name="message" novalidate>
+        <div class="popup-main__form-feedback">
+            <label class="popup-main__form-left-input popup-main__form-lable">
+                <input class="popup-main__form-input input-text-message_js" type="text" name="name">
+                <span class="popup-main__form-text">What is your name?<span class="fill">*</span></span>
+            </label>
+            <label class="popup-main__form-right-input popup-main__form-lable">
+                <input class="popup-main__form-input" type="text" name="messageSubject">
+                <span class="popup-main__form-text">Message subject<span class="fill">*</span></span>
+            </label>
+        </div>
+        <div class="popup-main__form-feedback">
+            <label class="popup-main__form-left-input popup-main__form-lable">
+                <input class="popup-main__form-input" type="email" name="email">
+                <span class="popup-main__form-text">Your Email<span class="fill">*</span></span>
+            </label>
+            <label class="popup-main__form-right-input popup-main__form-lable">
+                <input class="popup-main__form-input" type="tel" name="phone">
+                <span class="popup-main__form-text">Your mobile phone<span class="fill">*</span></span>
+            </label>
+        </div>
+        <label class="popup-main__form-lable">
+            <textarea class="popup-main__form-message" name="message" cols="30" rows="10"></textarea>
+            <span class="popup-main__form-text">What do you want to discuss with me?</span>
+        </label>
+        <label class="popup-main__form-subscribe">
+            <input class="popup-main__form-subscribe--checkbox" type="checkbox" name="subscribe" value="personal data">
+            <span class="popup-main__form-subscribe--fake"></span>
+            <span class="popup-main__form-subscribe--text">Clicking on the button, you consent to the processing of your personal data.</span>
+        </label>
+        <button class="popup-main__form-button button" type="submit">Send</button>
+        <button class="popup-main__form-close message-close_js" type="button" aria-label="exit"></button>
+    </form>
+</section>

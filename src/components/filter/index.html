@@ -2,7 +2,7 @@
     <div class="container">
         <div class="filter__main">
             <h1 class="filter__title title-block__one">My blog</h1>
-            <button class="filter__burger-menu burger-menu">
+            <button class="filter__burger-menu burger-menu button-open-menu_js">
                 <span class="visually-hidden">Button open mobile menu</span>
                 <svg class="burger-menu-svg" width="32" height="20" viewBox="0 0 32 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect y="6.10352e-05" width="32" height="4" rx="2" fill="#070707" />
@@ -13,156 +13,107 @@
         </div>
         <div class="filter__wrapper">
             <h2 class="visually-hidden">filter</h2>
-            <form class="filter__form" action="/">
-                <fieldset class="filter__tags">
-                    <legend class="filter__name">Tags</legend>
-                    <ul class="filter__input-list">
-                        <li class="filter__input-item">
-                            <label class="filter__label">
-                                <input class="filter__input-checkbox " name="tags" type="checkbox" value="dark-blue">
-                                <span class="filter__input-fake filter__input-fake--dark-blue"></span>
-                            </label>
-                        </li>
-                        <li class="filter__input-item">
-                            <label class="filter__label">
-                                <input class="filter__input-checkbox" name="tags" type="checkbox" value="blue">
-                                <span class="filter__input-fake filter__input-fake--blue"></span>
-                            </label>
-                        </li>
-                        <li class="filter__input-item">
-                            <label class="filter__label">
-                                <input class="filter__input-checkbox" name="tags" type="checkbox" value="yellow">
-                                <span class="filter__input-fake filter__input-fake--yellow"></span>
-                            </label>
-                        </li>
-                        <li class="filter__input-item">
-                            <label class="filter__label">
-                                <input class="filter__input-checkbox" name="tags" type="checkbox" value="turquoise">
-                                <span class="filter__input-fake filter__input-fake--turquoise"></span>
-                            </label>
-                        </li>
-                        <li class="filter__input-item">
-                            <label class="filter__label">
-                                <input class="filter__input-checkbox" name="tags" type="checkbox" value="orange">
-                                <span class="filter__input-fake filter__input-fake--orange"></span>
-                            </label>
-                        </li>
-                        <li class="filter__input-item">
-                            <label class="filter__label">
-                                <input class="filter__input-checkbox" name="tags" type="checkbox" value="pink">
-                                <span class="filter__input-fake filter__input-fake--pink"></span>
-                            </label>
-                        </li>
-                        <li class="filter__input-item">
-                            <label class="filter__label">
-                                <input class="filter__input-checkbox" name="tags" type="checkbox" value="purple">
-                                <span class="filter__input-fake filter__input-fake--purple"></span>
-                            </label>
-                        </li>
-                        <li class="filter__input-item">
-                            <label class="filter__label">
-                                <input class="filter__input-checkbox" name="tags" type="checkbox" value="green">
-                                <span class="filter__input-fake filter__input-fake--green"></span>
-                            </label>
-                        </li>
-                    </ul>
-                </fieldset>
-                <fieldset class="filter__views">
-                    <legend class="filter__name">Views</legend>
-                    <ul class="filter__radio-list">
-                        <li class="filter__radio-item">
-                            <input id="100-500" type="radio" name="views" value="100-500" checked>
-                            <label class="filter__input-label" for="100-500">
-                                <span class="filter__input-name">100-500</span>
-                            </label>
-                        </li>
-                        <li class="filter__radio-item">
-                            <input id="500-1000" type="radio" name="views" value="500-1000">
-                            <label class="filter__input-label" for="500-1000">
-                                <span class="filter__input-name">500-1000</span>
-                            </label>
-                        </li>
-                        <li class="filter__radio-item">
-                            <input id="1000-2000" type="radio" name="views" value="1000-2000">
-                            <label class="filter__input-label" for="1000-2000">
-                                <span class="filter__input-name">1000-2000</span>
-                            </label>
-                        </li>
-                    </ul>
-                </fieldset>
-                <fieldset class="filter__comments">
-                    <legend class="filter__name">Comments</legend>
-                    <ul class="filter__comments-list">
-                        <li class="filter__checkbox-item">
-                            <label class="filter__label">
-                                <input class="filter__input-checkbox" name="comments" type="checkbox" value="0">
-                                <span class="filter__input-fake filter__input-fake--black"></span>
-                                <span class="filter__input-checkbox--name">0</span>
-                            </label>
-                        </li>
-                        <li class="filter__checkbox-item">
-                            <label class="filter__label">
-                                <input class="filter__input-checkbox" name="comments" type="checkbox" value="0-1">
-                                <span class="filter__input-fake filter__input-fake--black"></span>
-                                <span class="filter__input-checkbox--name">0-1</span>
-                            </label>
-                        </li>
-                        <li class="filter__checkbox-item">
-                            <label class="filter__label">
-                                <input class="filter__input-checkbox" name="comments" type="checkbox" value="1-50">
-                                <span class="filter__input-fake filter__input-fake--black"></span>
-                                <span class="filter__input-checkbox--name">1-50</span>
-                            </label>
-                        </li>
-                    </ul>
-                </fieldset>
-                <fieldset class="filter__show">
-                    <legend class="filter__name">How show?</legend>
-                    <ul class="filter__radio-list">
-                        <li class="filter__radio-item">
-                            <input id="show_5" type="radio" name="show" value="show_5" checked>
-                            <label class="filter__input-label" for="show_5">
-                                <span class="filter__input-name">show 5</span></label>
-                        </li>
-                        <li class="filter__radio-item">
-                            <input id="show_10" type="radio" name="show" value="show_10">
-                            <label class="filter__input-label" for="show_10">
-                                <span class="filter__input-name">show 10</span></label>
-                            </label>
-                        </li>
-                    </ul>
-                </fieldset>
-                <fieldset class="filter__sort">
-                    <legend class="filter__name">Sort by</legend>
-                    <ul class="filter__sort-list">
-                        <li class="filter__radio-item">
-                            <input id="date" type="radio" name="sort" value="date" checked>
-                            <label class="filter__input-label" for="date">
-                                <span class="filter__input-name">date</span></label>
-                            </label>
-                        </li>
-                        <li class="filter__radio-item">
-                            <input id="title" type="radio" name="sort" value="title">
-                            <label class="filter__input-label" for="title">
-                                <span class="filter__input-name">title</span></label>
-                            </label>
-                        </li>
-                        <li class="filter__radio-item">
-                            <input id="views" type="radio" name="sort" value="views">
-                            <label class="filter__input-label" for="views">
-                                <span class="filter__input-name">views</span></label>
-                            </label>
-                        </li>
-                    </ul>
-                </fieldset>
-                <button class="filter__button button" type="submit">Reset</button>
-            </form>
-            <div class="filter__search">
-                <form class="filter__search-wrapper" action="/">
-                    <input class="filter__search-input" type="text" name="search">
+            <form class="filter__form filter_js" action="">
+                <div class="filter__form-wrapper">
+                    <fieldset class="filter__tags">
+                        <legend class="filter__name">Tags</legend>
+                        <div class="tagBox_js filter__tags-box"></div>
+                    </fieldset>
+                    <fieldset class="filter__views">
+                        <legend class="filter__name">Views</legend>
+                        <ul class="filter__radio-list">
+                            <li class="filter__radio-item">
+                                <input id="100-500" type="radio" name="views" value="100-500" checked>
+                                <label class="filter__input-label" for="100-500">
+                                    <span class="filter__input-name">100-500</span>
+                                </label>
+                            </li>
+                            <li class="filter__radio-item">
+                                <input id="500-1000" type="radio" name="views" value="500-1000">
+                                <label class="filter__input-label" for="500-1000">
+                                    <span class="filter__input-name">500-1000</span>
+                                </label>
+                            </li>
+                            <li class="filter__radio-item">
+                                <input id="1000-2000" type="radio" name="views" value="1000-2000">
+                                <label class="filter__input-label" for="1000-2000">
+                                    <span class="filter__input-name">1000-2000</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <fieldset class="filter__comments">
+                        <legend class="filter__name">Comments</legend>
+                        <ul class="filter__comments-list">
+                            <li class="filter__checkbox-item">
+                                <label class="filter__label">
+                                    <input class="filter__input-checkbox" name="comments" type="checkbox" value="0">
+                                    <span class="filter__input-fake"></span>
+                                    <span class="filter__input-checkbox--name">0</span>
+                                </label>
+                            </li>
+                            <li class="filter__checkbox-item">
+                                <label class="filter__label">
+                                    <input class="filter__input-checkbox" name="comments" type="checkbox" value="0-1">
+                                    <span class="filter__input-fake filter__input-fake--black"></span>
+                                    <span class="filter__input-checkbox--name">0-1</span>
+                                </label>
+                            </li>
+                            <li class="filter__checkbox-item">
+                                <label class="filter__label">
+                                    <input class="filter__input-checkbox" name="comments" type="checkbox" value="1-50">
+                                    <span class="filter__input-fake filter__input-fake--black"></span>
+                                    <span class="filter__input-checkbox--name">1-50</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <fieldset class="filter__show">
+                        <legend class="filter__name">How show?</legend>
+                        <ul class="filter__radio-list">
+                            <li class="filter__radio-item">
+                                <input id="show_5" type="radio" name="show" value="show_5" checked>
+                                <label class="filter__input-label" for="show_5">
+                                    <span class="filter__input-name">show 5</span></label>
+                            </li>
+                            <li class="filter__radio-item">
+                                <input id="show_10" type="radio" name="show" value="show_10">
+                                <label class="filter__input-label" for="show_10">
+                                    <span class="filter__input-name">show 10</span></label>
+                                </label>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <fieldset class="filter__sort">
+                        <legend class="filter__name">Sort by</legend>
+                        <ul class="filter__sort-list">
+                            <li class="filter__radio-item">
+                                <input id="date" type="radio" name="sort" value="date" checked>
+                                <label class="filter__input-label" for="date">
+                                    <span class="filter__input-name">date</span></label>
+                                </label>
+                            </li>
+                            <li class="filter__radio-item">
+                                <input id="title" type="radio" name="sort" value="title">
+                                <label class="filter__input-label" for="title">
+                                    <span class="filter__input-name">title</span></label>
+                                </label>
+                            </li>
+                            <li class="filter__radio-item">
+                                <input id="views" type="radio" name="sort" value="views">
+                                <label class="filter__input-label" for="views">
+                                    <span class="filter__input-name">views</span></label>
+                                </label>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <button class="filter__button button reset_js" type="reset">Reset</button>
+                </div>
+                <div class="filter__search-wrapper">
+                    <input class="filter__search-input" type="text" name="title">
                     <button class="filter__search-button button" type="submit">Search</button>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </section>

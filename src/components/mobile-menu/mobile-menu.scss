@@ -15,12 +15,27 @@
 
   background-color: rgba($c_grey-2, 0.99);
 
+  &_open {
+    display: block;
+
+    animation: animate 0.3s;
+
+    @keyframes animate {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+
   &__button-close {
     border: none;
 
     background-color: initial;
 
-    margin: 172px 23px 58px 0;
+    margin: 50px 23px 181px 0;
   }
 
   &__nav {

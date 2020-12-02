@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link href="/common.css" rel="stylesheet" />
-  <link href="style.css" rel="stylesheet" />
   <link rel="stylesheet" href="/static/fonts/gilroy/stylesheet.css" type="text/css" />
   <link rel="shortcut icon" href="/static/images/favicon.ico">
   <title>My blog</title>
@@ -19,7 +18,10 @@
     @@include('blog/index.html')
   </main>
   @@include('footer/index.html')
-  <script src="index.js"></script>
+  @@include('button-top/index.html')
+  @@include('mobile-menu/index.html')
+  @@include('popup-main/message-modal.html')
+  <script src="my-blog.js"></script>
 </body>
 
 </html>

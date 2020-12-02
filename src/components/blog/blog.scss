@@ -53,39 +53,11 @@
     width: 30px;
     height: 10px;
 
-    background-color: $c_white;
+    background-color: $c_black;
 
     border-radius: 5px;
 
     margin-right: 5px;
-
-    &--orange {
-      background-color: $checkbox_orange;
-    }
-
-    &--purple {
-      background-color: $checkbox_purple;
-    }
-
-    &--green {
-      background-color: $checkbox_green;
-    }
-
-    &--blue {
-      background-color: $checkbox_blue;
-    }
-
-    &--dark-blue {
-      background-color: $checkbox_dark-blue;
-    }
-
-    &--pink {
-      background-color: $checkbox_pink;
-    }
-
-    &--turquoise {
-      background-color: $checkbox_turquoise;
-    }
   }
 
   &__info {

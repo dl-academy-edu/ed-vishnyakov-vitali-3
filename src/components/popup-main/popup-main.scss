@@ -2,9 +2,7 @@
 @import "../vars.scss";
 @import "../mixins.scss";
 
-.message-modal {
-  display: none;
-
+.popup-main {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -13,13 +11,7 @@
 
   background-color: $c_grey-2;
 
-  &_open {
-    display: flex;
-
-    @include media_interval(0, $media_mobile-medium) {
-      padding: 0 20px;
-    }
-  }
+  z-index: 111;
 
   &__form {
     display: flex;
@@ -53,6 +45,10 @@
 
     @include media_interval(0, $media_mobile) {
       padding: 25px 24px;
+    }
+
+    &-sign {
+      width: 370px;
     }
 
     &-lable {
@@ -171,73 +167,71 @@
         display: flex;
         margin-bottom: 18px;
       }
-    }
 
-    &-subscribe--checkbox {
-      display: none;
+      &--checkbox {
+        display: none;
 
-      &:checked + .message-modal__form-subscribe--fake::before {
-        opacity: 1;
-      }
-    }
-
-    &-subscribe--fake {
-      display: inline-block;
-
-      width: 19px;
-      height: 19px;
-
-      border: 2px solid;
-      box-sizing: border-box;
-      border-radius: 3px;
-
-      position: relative;
-
-      @include media_interval(0, $media_mobile) {
-        width: 29px;
-        height: 17px;
-
-        margin-right: 13px;
+        &:checked + .popup-main__form-subscribe--fake::before {
+          opacity: 1;
+          pointer-events: auto;
+        }
       }
 
-      &::before {
-        content: "";
-        position: absolute;
-        top: 40%;
-        left: 51%;
-        transform: translate(-50%, -50%);
+      &--fake {
+        display: inline-block;
 
-        display: block;
-        width: 100%;
-        height: 100%;
-        background: url(/static/images/check.svg);
-        background-repeat: no-repeat;
-        background-size: 16px 14px;
+        width: 19px;
+        height: 19px;
 
-        opacity: 0;
-        transition: 0.2s;
+        border: 2px solid;
+        box-sizing: border-box;
+        border-radius: 3px;
+
+        position: relative;
+
+        cursor: pointer;
+
+        @include media_interval(0, $media_mobile) {
+          width: 29px;
+          height: 17px;
+
+          margin-right: 13px;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 40%;
+          left: 51%;
+          transform: translate(-50%, -50%);
+
+          display: block;
+          width: 100%;
+          height: 100%;
+          background: url(/static/images/check.svg);
+          background-repeat: no-repeat;
+          background-size: 16px 14px;
+
+          opacity: 0;
+          transition: 0.2s;
+        }
       }
-    }
 
-    &-subscribe--text,
-    &-subscribe--fake {
-      cursor: pointer;
-    }
+      &--text {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
 
-    &-subscribe-text {
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 16px;
+        padding-left: 11px;
 
-      padding-left: 11px;
+        vertical-align: text-top;
 
-      vertical-align: text-top;
+        cursor: pointer;
 
-      cursor: pointer;
-
-      @include media_interval(0, $media_mobile) {
-        padding: 0;
+        @include media_interval(0, $media_mobile) {
+          padding: 0;
+        }
       }
     }
 
@@ -246,31 +240,98 @@
 
       margin: 0;
     }
-  }
 
-  &__form-close {
-    position: absolute;
-    top: -3px;
-    right: -39px;
+    &-button {
+      align-self: start;
+    }
+
+    &-close {
+      position: absolute;
+      top: -3px;
+      right: -39px;
+      cursor: pointer;
+
+      width: 25px;
+      height: 25px;
+
+      border: none;
+
+      background: url(/static/images/Close.svg);
+
+      transition: $tr_duration $tr_easing;
+
+      @include media_interval(0, $media_tablet) {
+        top: -30px;
+        right: 0;
+      }
+
+      &:hover,
+      &:active {
+        background: url(/static/images/Close_black.svg);
+      }
+    }
+  }
+}
+
+.sign,
+.register,
+.message {
+  display: none;
+
+  &_open {
+    display: flex;
+
+    animation: animate 0.3s;
+
+    @keyframes animate {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.isInvalid {
+  border: 2.5px solid $c_red;
+
+  &:hover,
+  &:focus {
+    border: 2.5px solid $c_red;
     cursor: pointer;
-
-    width: 25px;
-    height: 25px;
-
-    border: none;
-
-    background: url(/static/images/Close.svg);
-
-    transition: $tr_duration $tr_easing;
-
-    @include media_interval(0, $media_tablet) {
-      top: -25px;
-      right: 0;
-    }
-
-    &:hover,
-    &:active {
-      background: url(/static/images/Close_black.svg);
-    }
   }
+}
+
+.invalidFeedback {
+  color: $c_red;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+
+  margin: 0 0 -16px;
+}
+
+.isNormal {
+  border: 2.5px solid $c_green;
+
+  &:hover,
+  &:focus {
+    border: 2.5px solid $c_green;
+    cursor: pointer;
+  }
+}
+
+.normalFeedback {
+  color: $c_green;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+
+  margin: 0 0 -16px;
 }

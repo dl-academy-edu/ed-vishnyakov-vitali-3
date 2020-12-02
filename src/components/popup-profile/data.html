@@ -1,0 +1,43 @@
+<section class="data popup-profile data-modal_js">
+    <form class="popup-profile__form" action="/index.html" name="editingData">
+        <label class="popup-profile__form-lable">
+            <input class="popup-profile__form-input input-text-data_js" type="email" name="email" placeholder="larioshkina@gmail.com">
+            <span class="popup-profile__form-text">Email</span>
+        </label>
+        <div class="popup-profile__form-feedback">
+            <label class="popup-profile__form-left-input popup-profile__form-lable">
+                <input class="popup-profile__form-input" type="text" name="name" placeholder="Ksenia">
+                <span class="popup-profile__form-text">Name</span>
+            </label>
+            <label class="popup-profile__form-right-input popup-profile__form-lable">
+                <input class="popup-profile__form-input" type="text" name="surname" placeholder="Larioshkina">
+                <span class="popup-profile__form-text">Surname</span>
+            </label>
+        </div>
+        <div class="popup-profile__form-feedback">
+            <label class="popup-profile__form-left-input popup-profile__form-lable">
+                <input class="popup-profile__form-input" type="text" name="location" placeholder="Moscow">
+                <span class="popup-profile__form-text">Location</span>
+            </label>
+            <label class="popup-profile__form-right-input popup-profile__form-lable">
+                <input class="popup-profile__form-input" type="text" name="age" placeholder="17">
+                <span class="popup-profile__form-text">Age</span>
+            </label>
+        </div>
+        <div class="popup-profile__form-feedback popup-profile__form-file">
+
+            <label class="popup-profile__form-file--label popup-profile__form-lable">
+                <input class="popup-profile__form-input popup-profile__form-file--hide visually-hidden" type="file" name="picture" placeholder="file-name.png" multiple>
+                <span class="popup-profile__form-file--title">Profile picture</span>
+                <span class="popup-profile__form-file--icon">
+                    <img class="popup-profile__form-file--img" src="/static/images/file-icon.svg" alt="выбрать файл">
+                </span>
+                <span class="popup-profile__form-file--text">file-name.png</span>
+
+
+            </label>
+        </div>
+        <button class="popup-profile__form-button button" type="submit">Submit changes</button>
+        <button class="popup-profile__form-close data-close_js" type="button" aria-label="exit"></button>
+    </form>
+</section>

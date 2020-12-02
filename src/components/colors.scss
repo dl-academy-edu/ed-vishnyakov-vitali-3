@@ -12,6 +12,14 @@ $c_grey: #828282;
 $c_grey-2: #f6f6f6;
 $c_grey-3: #e5e5e5;
 
+// red
+
+$c_red: #eb3617;
+
+// green
+
+$c_green: #03bc3c;
+
 // checkbox
 
 $checkbox_dark-blue: #2176ff;
@@ -22,3 +30,13 @@ $checkbox_orange: #f79824;
 $checkbox_pink: #e08dac;
 $checkbox_purple: #6a7fdb;
 $checkbox_green: #45cb85;
+
+//preloader
+
+$color-4: #eead68;
+$color-3: #eec368;
+$color-2: #eece68;
+$color-1: #eed968;
+$color-5: #ee8c68;
+
+$color: $color-1, $color-2, $color-3, $color-4, $color-5;
