@@ -134,7 +134,7 @@
 
     margin-top: 12px;
 
-    &-button {
+    &-item {
       padding: 0 5px;
     }
 
@@ -148,7 +148,8 @@
       transition: color $tr_duration $tr_easing;
 
       &:hover,
-      &:focus {
+      &:focus,
+      &:active {
         color: $c_black;
       }
     }

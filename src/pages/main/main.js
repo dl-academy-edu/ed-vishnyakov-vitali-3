@@ -316,12 +316,12 @@ function getFormData(form, data = {}) {
             errors.surname = "Wrong last name";
         }
         if (data.password === "") {
-            errors.password = "Нужно ввести пароль";
+            errors.password = "Enter password";
         } else if (data.password.length < 8) {
             errors.password = "Short password"
         }
         if (data.repeatPassword !== data.password || data.repeatPassword === "") {
-            errors.repeatPassword = "Пароль не совпал";
+            errors.repeatPassword = "The password did not match";
         }
         if(data.location === "") {
             errors.location = "Enter city";
@@ -330,7 +330,7 @@ function getFormData(form, data = {}) {
             errors.age = "Age is incorrect";
         } 
         if(data.subscribe[0] !== "yes") {
-            errors.subscribe = "Поставьте галочку";
+            errors.subscribe = "Mandatory item";
         }
         return errors;
     }
@@ -364,7 +364,7 @@ function getFormData(form, data = {}) {
             errors.phone = "Please enter a valid phone number";
         }
         if(data.subscribe[0] !== "yes") {
-            errors.subscribe = "Необходимо дать согласие";
+            errors.subscribe = "Mandatory item";
         }
         return errors;
     }

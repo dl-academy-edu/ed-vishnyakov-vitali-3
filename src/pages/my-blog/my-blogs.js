@@ -4,21 +4,53 @@ const SERVER_URL = 'https://academy.directlinedev.com';
 const VERSION_API = '1.0.0';
 
 
-const form = document.querySelector(".filter_js"); 
+const form = document.querySelector(".filter_js");
 const tagsBox = document.querySelector(".tagBox_js");
 const articleBox = document.querySelector(".article_js");
 const paginationBox = document.querySelector(".page-numbers_js");
 const buttonPrev = document.querySelector(".pagination-nav-prev_js");
 const buttonNext = document.querySelector(".pagination-nav-next_js");
-const PAGE_LIMIT = 4;
+const PAGE_LIMIT = 5;
 let data = {
     page: 0
 };
 
+function callback(xhr) {
+    const response = JSON.parse(xhr.response);
+    if (response.success) {
+        articleBox.innerHTML = "";
+        for(let card of response.data) {
+            articleBox.innerHTML += cardCreator(card);
+            let posts = [...document.querySelectorAll(".blog__content")];
+            let post = posts[posts.length - 1];
+            let tagBox = post.querySelector('.postTagBox_js');
+            for (let tag of card.tags) {
+                tagBox.innerHTML += cardTagCreator(tag);
+            }
+        }
+        let count = response.count,
+            index = 0;
+        paginationBox.innerHTML = "";
+        while(count - PAGE_LIMIT > 0) {
+            count -= PAGE_LIMIT;
+            const a = pageCreator(index, data, (e) => {
+                form.submit(e, true);
+            });
+            index++;
+            paginationBox.insertAdjacentElement("beforeend", a);
+        }
+        const a = pageCreator(index, data, (e) => {
+            form.submit(e, true);
+        });
+        index++;
+        paginationBox.insertAdjacentElement("beforeend", a);
+    } else {
+        console.error("Произошла ошибка!")
+    }
+}
 (function () {
 
     tagsBox.innerHTML = preloaderCreator();
-	getPosts(getFormData(form));
 
     let xhr = new XMLHttpRequest();
     xhr.open("GET", `${SERVER_URL}/api/tags`);
@@ -32,6 +64,7 @@ let data = {
             }
             const params = getParamsFromURL();
             setValueToForm(form, params);
+            getPosts(getFormData(form), callback);
         } else {
             alert(response._message);
         }
@@ -42,65 +75,53 @@ let data = {
     }
 
     form.addEventListener("submit", function submit(e, isA) {
-        e.preventDefault();
+        e.preventDefault(e);
         let page = data.page || 0;
         data = getFormData(form);
         if(isA) {
             data.page = page;
         } else {
-            data.page = 0;           
+            data.page = 0;
         }
-
         setParamsToURL(data);
-
         articleBox.innerHTML = preloaderCreator();
-        getPosts(data, function callback(xhr) {
-            const response = JSON.parse(xhr.response);
-            if (response.success) {
-                articleBox.innerHTML = "";
-                for(let card of response.data) {
-                    articleBox.innerHTML += cardCreator(card);
-                }
-                let count = response.count, index = 0;
-                paginationBox.innerHTML = "";
-                while(count - PAGE_LIMIT > 0) {
-                    count -= PAGE_LIMIT;
-                    const a = pageCreator(index, data, (e) => {
-                        form.submit(e, true);
-                    })
-                    index++;
-                    paginationBox.insertAdjacentElement("beforeend", a)
-                }
-                const a = pageCreator(index, data, (e) => {
-                    form.submit(e, true);
-                })
-                index++;
-                paginationBox.insertAdjacentElement("beforeend", a)
-                console.log(response.count);
-            } else {
-                console.error("Произошла ошибка!")
-            }
-        });
+        getPosts(data, callback);
     })
 })();
 
 function getPosts(params, onload) {
 
     let url = new URL("https://qwe.ru");
-    if(params.tags) {
+    if(params.tags[0]) {
         url.searchParams.set("tags", JSON.stringify(params.tags));
+    }
+    if(params.shows) {
+        url.searchParams.set("limit", JSON.stringify(+params.shows));
     }
     url.searchParams.set("v", VERSION_API);
     url.searchParams.set("limit", PAGE_LIMIT);
+    url.searchParams.set("offset", (PAGE_LIMIT * params.page || 0));
+
+    let sort = ["id", "ASC"];
+    if (params.sort) {
+        sort[0] = params.sort;
+    }
+
+url.searchParams.set("sort", JSON.stringify(sort));
 
     let filter = {};
     if(params.title) {
         filter.title = params.title;
     }
+    if (params.views) {
+        let min = (params.views).split("-")[0];
+        let max = (params.views).split("-")[1];
+        filter.views = {$between: [min, max]};
+    }
 
     url.searchParams.set("filter", JSON.stringify(filter));
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", `${SERVER_URL}/api/posts?${url.searchParams}`);
+    xhr.open("GET", `${SERVER_URL}/api/posts?${url.searchParams}`, true);
     xhr.send();
     xhr.onload = function() {
         onload(xhr);
@@ -226,10 +247,10 @@ function preloaderCreator() {
 }
 
 function tagCreator(tag) {
-    return `<div class="filter__checkbox-item--tags">
+    return `<div class="filter__checkbox-tags">
                 <label class="filter__label">
                     <input class="filter__input-checkbox" name="tags" type="checkbox" value="${tag.id}">
-                    <span class="filter__input-fake filter__input-fake--${tag.color}" style = "border-color: ${tag.color}"></span>
+                    <span class="filter__input-fake" style = "border-color: ${tag.color}">
                 </label>
             </div>`;
 }
@@ -237,15 +258,13 @@ function tagCreator(tag) {
 function cardCreator(card) {
     return `<article class="blog__content">
                 <picture class="blog__picture">
-				<source srcset="${SERVER_URL}${card.photo.desktopPhotoUrl}", srcset="${SERVER_URL}${card.photo.desktop2xPhotoUrl}" 2x" media="(min-width: 800px)">
-				<source srcset="${SERVER_URL}${card.photo.tabletPhotoUrl}, srcset="${SERVER_URL}${card.photo.tablet2xPhotoUrl} 2x" media="(min-width: 670px) and (max-width: 799px)">
-				<source srcset="${SERVER_URL}${card.photo.mobilePhotoUrl}, srcset="${SERVER_URL}${card.photo.mobile2xPhotoUrl} 2x" media="(max-width: 669px)">
-				<img class="blog__img" src="${SERVER_URL}${card.photo.desktopPhotoUrl}" alt="${card.title}">
+                        <source srcset="${SERVER_URL}${card.photo.desktopPhotoUrl}" srcset="${SERVER_URL}${card.photo.desktop2xPhotoUrl} 2x" media="(min-width: 800px)">
+                        <source srcset="${SERVER_URL}${card.photo.tabletPhotoUrl}" srcset="${SERVER_URL}${card.photo.tablet2xPhotoUrl} 2x" media="(min-width: 670px) and (max-width: 799px)">
+                        <source srcset="${SERVER_URL}${card.photo.mobilePhotoUrl}" srcset="${SERVER_URL}${card.photo.mobile2xPhotoUrl} 2x" media="(max-width: 669px)">
+                        <img class="blog__img" src="${SERVER_URL}${card.photo.desktopPhotoUrl}" alt="${card.title}">
                 </picture>
                 <div class="blog__filling">
-                    <div class="blog__tags">
-                    
-                    </div>
+                    <div class="blog__tags postTagBox_js"></div>
                     <div class="blog__info">
                         <span class="blog__info-date">${new Date(card.date).toLocaleDateString()}</span>
                         <span class="blog__info-views">${card.views} views</span>
@@ -259,10 +278,8 @@ function cardCreator(card) {
 }
 
 function cardTagCreator(tag) {
-    return `
-    <span class="blog__tag" style="color: ${tag.color}"></span>
-    `;
-}
+    return `<span class="blog__tag" style="background-color: ${tag.color}"></span>`;
+  }
 
 function pageCreator(index, data, onclick) {
     let li = document.createElement("li");
@@ -275,8 +292,8 @@ function pageCreator(index, data, onclick) {
         data.page = index;
         onclick(e);
     });
-	a.innerText = +index + 1;
-	li.insertAdjacentElement("beforeend", a);
+  a.innerText = +index + 1;
+  li.insertAdjacentElement("beforeend", a);
     return li;
 }
 
@@ -344,21 +361,21 @@ function pageCreator(index, data, onclick) {
         return;
     }
 
-    function handleScroll() {
+function handleScroll() {
         if (window.pageYOffset > 1000) {
                 buttonTop.classList.remove("visually-hidden");
         } else {
                 buttonTop.classList.add("visually-hidden");
         }
     }
-    
+
     function handleClick() {
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
         }
-    
+
     buttonTop.addEventListener("click", handleClick);
     window.addEventListener("scroll", handleScroll);
 
