@@ -475,6 +475,7 @@ function getFormData(form, data = {}) {
             setActiveSlide: setActiveSlide,
         }
     }
+    console.log(setActiveSlide);
 
 })();
 
@@ -490,5 +491,3 @@ function getFormData(form, data = {}) {
         },
     });
 })();
-
-
